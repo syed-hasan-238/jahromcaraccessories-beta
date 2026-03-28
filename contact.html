@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Juhrum Auto Accessories</title>
+<meta name="description" content="Find Juhrum Auto Accessories in Sharjah Industrial Area 4. Open 8AM–11PM every day. Message us on WhatsApp for quotes and inquiries.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── CONTACT HERO ── */
+.con-hero {
+  min-height: 60vh; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 0 52px 72px;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid rgba(196,154,56,.07);
+}
+.con-ambient {
+  position: absolute; right: -4%; top: -10%;
+  font-family: var(--fd); font-size: 30vw; letter-spacing: .06em;
+  color: rgba(196,154,56,.025); pointer-events: none; line-height: 1;
+}
+.con-h1 {
+  font-family: var(--fd); font-size: clamp(72px, 11vw, 168px);
+  line-height: .88; letter-spacing: .02em; color: var(--white);
+}
+.con-h1 .g { color: var(--gold); }
+.con-h1 .s { -webkit-text-stroke: 1px rgba(237,236,231,.14); color: transparent; display: block; }
+.con-sub {
+  font-size: 15px; font-weight: 300; color: var(--silver);
+  max-width: 440px; line-height: 1.8; margin-top: 20px; letter-spacing: .015em;
+}
+
+/* ── MAIN CONTACT LAYOUT ── */
+.con-main {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; min-height: 60vh;
+  border-bottom: 1px solid rgba(196,154,56,.07);
+}
+.con-left {
+  padding: 80px 52px; background: var(--black);
+  border-right: 1px solid rgba(255,255,255,.04);
+}
+.con-right { padding: 80px 52px; background: var(--deep); }
+
+.con-h2 {
+  font-family: var(--fd); font-size: clamp(40px, 5vw, 72px);
+  line-height: .9; letter-spacing: .02em; color: var(--white); margin-bottom: 36px;
+}
+.con-h2 .g { color: var(--gold); }
+
+/* info rows */
+.info-row {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.info-row:first-of-type { border-top: 1px solid rgba(255,255,255,.04); }
+.info-key {
+  font-family: var(--fu); font-size: 8px; letter-spacing: .32em;
+  text-transform: uppercase; color: var(--gold); min-width: 70px; padding-top: 2px;
+}
+.info-val { font-size: 14px; font-weight: 300; color: var(--silver); line-height: 1.65; }
+.info-val a { color: var(--gold); text-decoration: none; transition: opacity .3s; }
+.info-val a:hover { opacity: .7; }
+
+/* map */
+.map-embed {
+  width: 100%; height: 280px; background: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; margin-top: 36px;
+  border: 1px solid rgba(196,154,56,.07);
+}
+.map-embed::before {
+  content: '[ Google Maps Embed — Industrial Area 4, First Industrial Street 274, Sharjah ]';
+  font-family: var(--fu); font-size: 9px; letter-spacing: .14em;
+  color: rgba(196,154,56,.18); text-transform: uppercase; text-align: center; padding: 20px;
+}
+/* To embed real map: replace this div with an <iframe> from Google Maps */
+
+/* WA button */
+.wa-big {
+  display: flex; align-items: center; gap: 18px;
+  background: #25D366; color: #000; text-decoration: none;
+  padding: 26px 36px; margin-bottom: 16px;
+  font-family: var(--fu); font-size: 14px; letter-spacing: .18em;
+  text-transform: uppercase; font-weight: 600;
+  position: relative; overflow: hidden; transition: all .3s;
+}
+.wa-big::before {
+  content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.12);
+  transform: translateX(-100%); transition: transform .45s cubic-bezier(.76,0,.24,1);
+}
+.wa-big:hover::before { transform: translateX(0); }
+.wa-big svg, .wa-big span { position: relative; z-index: 1; }
+
+.tel-link {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--white); text-decoration: none; font-family: var(--fu);
+  font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+  padding: 18px 36px; border: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 16px; transition: all .3s;
+}
+.tel-link:hover { border-color: rgba(196,154,56,.25); color: var(--gold); }
+
+.soc-block { margin-top: 32px; }
+.soc-block-title {
+  font-family: var(--fu); font-size: 9px; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--dim); margin-bottom: 12px;
+}
+.soc-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.soc-btn {
+  font-family: var(--fu); font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--dim); text-decoration: none;
+  padding: 10px 18px; border: 1px solid rgba(255,255,255,.07); transition: all .3s;
+}
+.soc-btn:hover { color: var(--gold); border-color: rgba(196,154,56,.25); }
+
+/* hours grid */
+.hours-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 36px;
+}
+.hg-item {
+  background: var(--surface); padding: 20px 16px;
+  border: 1px solid rgba(196,154,56,.04);
+}
+.hg-day { font-family: var(--fu); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
+.hg-time { font-family: var(--fd); font-size: 18px; letter-spacing: .05em; color: var(--white); line-height: 1; }
+.hg-item.today { border-color: rgba(196,154,56,.2); background: rgba(196,154,56,.04); }
+.hg-item.today .hg-day { color: var(--gold); }
+
+/* ── DIRECTIONS SECTION ── */
+.directions {
+  padding: 80px 52px; background: var(--surface);
+  border-top: 1px solid rgba(196,154,56,.07);
+}
+.dir-inner { max-width: 1400px; margin: 0 auto; }
+.dir-h2 { font-family: var(--fd); font-size: clamp(44px, 6vw, 88px); line-height: .9; letter-spacing: .02em; color: var(--white); margin-bottom: 48px; }
+.dir-h2 .g { color: var(--gold); }
+.dir-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.dir-card {
+  background: var(--black); padding: 36px 28px;
+  border: 1px solid rgba(196,154,56,.05); position: relative; overflow: hidden;
+  transition: background .3s, border-color .3s;
+}
+.dir-card:hover { background: rgba(196,154,56,.03); border-color: rgba(196,154,56,.18); }
+.dir-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform .45s cubic-bezier(.76,0,.24,1);
+}
+.dir-card:hover::after { transform: scaleX(1); }
+.dir-step { font-family: var(--fd); font-size: 52px; color: rgba(196,154,56,.1); line-height: 1; margin-bottom: 12px; }
+.dir-title { font-family: var(--fu); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.dir-body { font-size: 13px; font-weight: 300; color: var(--dim); line-height: 1.72; }
+
+/* ── CTA BOTTOM ── */
+.con-cta {
+  padding: 100px 52px; background: var(--gold);
+  position: relative; overflow: hidden;
+}
+.con-cta::before {
+  content: 'VISIT'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: var(--fd); font-size: 24vw; letter-spacing: .1em;
+  color: rgba(0,0,0,.06); white-space: nowrap; pointer-events: none; line-height: 1;
+}
+.cta-inner-con {
+  max-width: 900px; margin: 0 auto; text-align: center;
+  position: relative; z-index: 1;
+}
+.cta-h { font-family: var(--fd); font-size: clamp(52px, 8vw, 120px); line-height: .9; color: var(--black); letter-spacing: .02em; margin-bottom: 20px; }
+.cta-sub { font-size: 14px; font-weight: 300; color: rgba(0,0,0,.5); max-width: 380px; margin: 0 auto 40px; line-height: 1.72; }
+.cta-btns { display: flex; gap: 16px; justify-content: center; align-items: center; }
+
+@media(max-width:900px){
+  .con-hero,.directions,.con-cta{padding-left:24px;padding-right:24px;}
+  .con-main{grid-template-columns:1fr;}
+  .con-left{border-right:none;border-bottom:1px solid rgba(255,255,255,.04);padding:56px 24px;}
+  .con-right{padding:56px 24px;}
+  .dir-grid{grid-template-columns:1fr;}
+  .hours-grid{grid-template-columns:1fr;}
+  .cta-btns{flex-direction:column;}
+}
+</style>
+</head>
+<body class="noise">
+
+<div id="jcursor"></div>
+<div id="jring"></div>
+<div id="jlabel"></div>
+
+<nav class="jnav">
+  <a href="index.html" class="jnav-logo"><img src="images/logo.png" alt="Juhrum Auto Accessories" style="height:26px;width:auto;filter:brightness(0) invert(1);vertical-align:middle;"></a>
+  <ul class="jnav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="contact.html" class="cur">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/9710503002898" class="jnav-wa" data-tip="WhatsApp">WhatsApp Us</a>
+</nav>
+
+<!-- HERO -->
+<div class="con-hero">
+  <div class="con-ambient">FIND US</div>
+  <div class="tag reveal" style="margin-bottom:22px;">Get In Touch</div>
+  <h1 class="con-h1 reveal d1">
+    LET'S<br>
+    <span class="g">BUILD</span><br>
+    <span class="s">YOURS.</span>
+  </h1>
+  <p class="con-sub reveal d2">Whether you know exactly what you need or just starting to explore — we're here. Come in, call, or message us on WhatsApp. We respond fast.</p>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-t">
+    <div class="ticker-i">Industrial Area 4<span class="ticker-dot"></span></div>
+    <div class="ticker-i">First Industrial Street 274<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Sharjah, UAE<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Open 8AM to 11PM<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Every Day<span class="ticker-dot"></span></div>
+    <div class="ticker-i">WhatsApp: 050 300 2898<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Industrial Area 4<span class="ticker-dot"></span></div>
+    <div class="ticker-i">First Industrial Street 274<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Sharjah, UAE<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Open 8AM to 11PM<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Every Day<span class="ticker-dot"></span></div>
+    <div class="ticker-i">WhatsApp: 050 300 2898<span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<!-- MAIN CONTACT -->
+<div class="con-main">
+  <div class="con-left">
+    <h2 class="con-h2 reveal">FIND<br><span class="g">US.</span></h2>
+    <div class="info-row reveal d1">
+      <span class="info-key">Address</span>
+      <span class="info-val">274, First Industrial Street<br>Industrial Area 4, after ADNOC<br>Sharjah, United Arab Emirates</span>
+    </div>
+    <div class="info-row reveal d2">
+      <span class="info-key">Hours</span>
+      <span class="info-val">8:00 AM – 11:00 PM<br>Open Every Day</span>
+    </div>
+    <div class="info-row reveal d3">
+      <span class="info-key">Phone</span>
+      <span class="info-val"><a href="tel:+9710503002898">+971 050 300 2898</a></span>
+    </div>
+    <div class="info-row reveal d4">
+      <span class="info-key">Email</span>
+      <span class="info-val"><a href="mailto:h_jahrom@yahoo.com">h_jahrom@yahoo.com</a></span>
+    </div>
+    <div class="map-embed reveal d4"></div>
+    <!-- Replace map-embed div content with:
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." width="100%" height="280" frameborder="0" allowfullscreen></iframe>
+    -->
+
+    <div class="hours-grid reveal">
+      <div class="hg-item today">
+        <div class="hg-day">Today</div>
+        <div class="hg-time">8AM–11PM</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-day">Every Day</div>
+        <div class="hg-time">8AM–11PM</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-day">No Holidays</div>
+        <div class="hg-time">Always Open</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-day">Weekend</div>
+        <div class="hg-time">8AM–11PM</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="con-right">
+    <h2 class="con-h2 reveal">REACH<br><span class="g">OUT.</span></h2>
+    <p style="font-size:14px;font-weight:300;color:var(--dim);line-height:1.8;margin-bottom:36px;letter-spacing:.015em;" class="reveal d1">
+      The fastest way to reach us is WhatsApp. Send us a message with your truck model and what you're looking for — we'll come back to you with options and pricing, usually the same day.
+    </p>
+
+    <a href="https://wa.me/9710503002898" class="wa-big reveal d1" target="_blank" data-tip="Chat">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>Message on WhatsApp</span>
+    </a>
+
+    <a href="tel:+9710503002898" class="tel-link reveal d2">
+      <span>📞</span>
+      <span>Call: 050 300 2898</span>
+    </a>
+
+    <a href="mailto:h_jahrom@yahoo.com" class="tel-link reveal d3">
+      <span>✉</span>
+      <span>h_jahrom@yahoo.com</span>
+    </a>
+
+    <div class="soc-block reveal d4">
+      <p class="soc-block-title">Follow Our Builds</p>
+      <div class="soc-btns">
+        <a href="https://instagram.com/Jahrom.4x4.ae" class="soc-btn" target="_blank" data-tip="Instagram">Instagram</a>
+        <a href="https://tiktok.com/@Jahrom.4x4.UAE" class="soc-btn" target="_blank" data-tip="TikTok">TikTok</a>
+        <a href="https://youtube.com/@jahrom_4x4_ae" class="soc-btn" target="_blank" data-tip="YouTube">YouTube</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIRECTIONS -->
+<div class="directions">
+  <div class="dir-inner">
+    <h2 class="dir-h2 reveal">HOW TO<br><span class="g">FIND US.</span></h2>
+    <div class="dir-grid">
+      <div class="dir-card reveal">
+        <div class="dir-step">01</div>
+        <div class="dir-title">From Dubai / Sharjah City</div>
+        <p class="dir-body">Take Emirates Road (E611) or Al Dhaid Road (E88) toward Sharjah Industrial Areas. Exit toward Industrial Area 4 — we're on First Industrial Street, building 274.</p>
+      </div>
+      <div class="dir-card reveal d1">
+        <div class="dir-step">02</div>
+        <div class="dir-title">The Landmark</div>
+        <p class="dir-body">We're located in Industrial Area 4, immediately after the ADNOC petrol pump on First Industrial Street. Look for the shop on your left — you'll see trucks being fitted outside.</p>
+      </div>
+      <div class="dir-card reveal d2">
+        <div class="dir-step">03</div>
+        <div class="dir-title">Parking & Access</div>
+        <p class="dir-body">Free parking available directly outside the showroom. We have space to manoeuvre trucks and large vehicles. Open 8AM to 11PM every day — no appointment needed, just come in.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BOTTOM -->
+<div class="con-cta">
+  <div class="cta-inner-con">
+    <h2 class="cta-h reveal">COME IN.<br>BUILD IT.</h2>
+    <p class="cta-sub reveal d1">No appointments needed. Walk in, tell us about your truck, and we'll show you what's possible.</p>
+    <div class="cta-btns reveal d2">
+      <a href="https://wa.me/9710503002898" class="btn-dark" target="_blank" data-tip="Chat">Message on WhatsApp →</a>
+      <a href="products.html" class="btn-o" style="color:rgba(0,0,0,.5);border-color:rgba(0,0,0,.2);">Browse Products</a>
+    </div>
+  </div>
+</div>
+
+<footer class="jfoot">
+  <div class="jfoot-logo">JUHR<b>UM</b></div>
+  <div class="jfoot-tag">Industrial Area 4, Sharjah UAE</div>
+  <div class="jfoot-copy">© 2025 Juhrum Auto Accessories</div>
+</footer>
+
+<script src="juhrum.js"></script>
+</body>
+</html>

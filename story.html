@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — Juhrum Auto Accessories</title>
+<meta name="description" content="The story of Juhrum — Persian craftsmanship, UAE desert culture, and five years of building the best pickup trucks in Sharjah.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── STORY HERO ── */
+.story-hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 0 52px 80px;
+  position: relative; overflow: hidden;
+}
+.sh-canvas { position: absolute; inset: 0; z-index: 0; }
+.sh-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(135deg, rgba(5,5,5,.9) 0%, rgba(5,5,5,.5) 60%, rgba(5,5,5,.85) 100%);
+}
+.sh-content { position: relative; z-index: 2; }
+.sh-h1 {
+  font-family: var(--fd); font-size: clamp(68px, 11vw, 170px);
+  line-height: .88; letter-spacing: .025em; color: var(--white);
+}
+.sh-h1 .g { color: var(--gold); }
+.sh-h1 .s { -webkit-text-stroke: 1px rgba(237,236,231,.15); color: transparent; display: block; }
+.sh-sub {
+  font-size: 15px; font-weight: 300; color: var(--silver);
+  max-width: 440px; line-height: 1.8; margin-top: 24px; letter-spacing: .015em;
+}
+.sh-scroll { margin-top: 48px; }
+
+/* ── EDITORIAL SECTIONS ── */
+.ed { padding: 120px 52px; position: relative; overflow: hidden; }
+
+/* Chapter markers */
+.ch-marker {
+  display: flex; align-items: center; gap: 20px; margin-bottom: 64px;
+}
+.ch-num {
+  font-family: var(--fd); font-size: 13px; letter-spacing: .1em; color: var(--gold);
+}
+.ch-line { flex: 1; height: 1px; background: rgba(196,154,56,.15); }
+.ch-title {
+  font-family: var(--fu); font-size: 10px; letter-spacing: .35em;
+  text-transform: uppercase; color: var(--dim);
+}
+
+/* Two-col layout */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.two-col.flip { direction: rtl; }
+.two-col.flip > * { direction: ltr; }
+
+.ed-h2 {
+  font-family: var(--fd); font-size: clamp(48px, 7vw, 108px);
+  line-height: .9; letter-spacing: .02em; color: var(--white); margin-bottom: 28px;
+}
+.ed-h2 .g { color: var(--gold); }
+.ed-h2 .s { -webkit-text-stroke: 1px rgba(237,236,231,.14); color: transparent; display: block; }
+.ed-body {
+  font-size: 15px; font-weight: 300; line-height: 1.85;
+  color: var(--silver); letter-spacing: .015em; margin-bottom: 20px;
+}
+.ed-body strong { color: var(--white); font-weight: 400; }
+.ed-body em { color: var(--gold); font-style: normal; }
+
+/* image block */
+.img-block {
+  position: relative; background: var(--surface); overflow: hidden;
+}
+.img-block canvas { position: absolute!important; inset: 0; width: 100%!important; height: 100%!important; }
+.img-block::before {
+  content: attr(data-ph); position: absolute; inset: 0; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fu); font-size: 9px; letter-spacing: .14em;
+  color: rgba(196,154,56,.13); text-transform: uppercase; text-align: center; padding: 32px;
+}
+.img-badge {
+  position: absolute; z-index: 2;
+  bottom: -16px; right: -16px;
+  background: var(--gold); padding: 16px 18px;
+}
+.img-badge-n { font-family: var(--fd); font-size: 36px; color: var(--black); line-height: 1; }
+.img-badge-l { font-family: var(--fu); font-size: 8px; letter-spacing: .18em; color: rgba(0,0,0,.6); display: block; margin-top: 2px; }
+
+/* pull quote */
+.pullquote {
+  padding: 80px 52px; background: var(--surface);
+  border-top: 1px solid rgba(196,154,56,.08);
+  border-bottom: 1px solid rgba(196,154,56,.08);
+}
+.pq-inner { max-width: 900px; margin: 0 auto; }
+.pq-text {
+  font-family: var(--fd); font-size: clamp(36px, 5vw, 72px);
+  line-height: .95; letter-spacing: .02em; color: var(--white);
+  margin-bottom: 24px;
+}
+.pq-text .g { color: var(--gold); }
+.pq-attr { font-family: var(--fu); font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--dim); }
+
+/* values grid */
+.values { padding: 120px 52px; background: var(--black); }
+.values-inner { max-width: 1400px; margin: 0 auto; }
+.values-h { font-family: var(--fd); font-size: clamp(52px, 7vw, 100px); line-height: .9; letter-spacing: .02em; color: var(--white); margin-bottom: 64px; }
+.values-h .g { color: var(--gold); }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.vcard {
+  background: var(--surface); padding: 48px 32px;
+  border: 1px solid rgba(196,154,56,.05);
+  transition: background .3s, border-color .3s; position: relative; overflow: hidden;
+}
+.vcard:hover { background: rgba(196,154,56,.03); border-color: rgba(196,154,56,.18); }
+.vcard::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform .45s cubic-bezier(.76,0,.24,1);
+}
+.vcard:hover::after { transform: scaleX(1); }
+.vcard-n { font-family: var(--fd); font-size: 68px; color: rgba(196,154,56,.08); line-height: 1; margin-bottom: 14px; }
+.vcard-title { font-family: var(--fu); font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--white); margin-bottom: 12px; }
+.vcard-body { font-size: 13px; font-weight: 300; color: var(--dim); line-height: 1.72; }
+
+/* numbers band */
+.nb { position: relative; z-index: 2; background: var(--gold); padding: 72px 52px; overflow: hidden; }
+.nb::before {
+  content: 'BUILT'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-family: var(--fd); font-size: 22vw; letter-spacing: .1em;
+  color: rgba(0,0,0,.05); white-space: nowrap; pointer-events: none; line-height: 1;
+}
+.nb-grid { display: grid; grid-template-columns: repeat(4,1fr); max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.nb-item { text-align: center; padding: 0 20px; border-right: 1px solid rgba(0,0,0,.12); }
+.nb-item:last-child { border-right: none; }
+.nb-n { font-family: var(--fd); font-size: 84px; color: var(--black); line-height: 1; display: block; }
+.nb-l { font-family: var(--fu); font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: rgba(0,0,0,.45); margin-top: 4px; }
+
+/* next page */
+.next-page {
+  display: flex; background: var(--surface);
+  border-top: 1px solid rgba(196,154,56,.08);
+}
+.np-item {
+  flex: 1; padding: 52px 44px; text-decoration: none;
+  display: flex; align-items: center; justify-content: space-between;
+  border-right: 1px solid rgba(255,255,255,.04);
+  transition: background .35s;
+}
+.np-item:last-child { border-right: none; }
+.np-item:hover { background: rgba(196,154,56,.04); }
+.np-label { font-family: var(--fu); font-size: 9px; letter-spacing: .34em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.np-title { font-family: var(--fd); font-size: 28px; letter-spacing: .06em; color: var(--white); }
+.np-arrow { font-family: var(--fd); font-size: 28px; color: rgba(196,154,56,.28); transition: transform .3s, color .3s; }
+.np-item:hover .np-arrow { transform: translateX(7px); color: var(--gold); }
+
+@media(max-width:900px){
+  .story-hero,.ed,.pullquote,.values{padding-left:24px;padding-right:24px;}
+  .two-col{grid-template-columns:1fr;gap:48px;}
+  .two-col.flip{direction:ltr;}
+  .values-grid{grid-template-columns:1fr;}
+  .nb-grid{grid-template-columns:1fr 1fr;}
+  .next-page{flex-direction:column;}
+  .np-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.04);}
+}
+</style>
+</head>
+<body class="noise">
+
+<div id="jcursor"></div>
+<div id="jring"></div>
+<div id="jlabel"></div>
+
+<nav class="jnav">
+  <a href="index.html" class="jnav-logo"><img src="images/logo.png" alt="Juhrum Auto Accessories" style="height:26px;width:auto;filter:brightness(0) invert(1);vertical-align:middle;"></a>
+  <ul class="jnav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="story.html" class="cur">Our Story</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/9710503002898" class="jnav-wa" data-tip="WhatsApp">WhatsApp Us</a>
+</nav>
+
+<!-- STORY HERO -->
+<div class="story-hero">
+  <canvas class="sh-canvas" id="storyCanvas"></canvas>
+  <div class="sh-overlay"></div>
+  <div class="sh-content">
+    <div class="tag reveal" style="margin-bottom:22px;">The Juhrum Story</div>
+    <h1 class="sh-h1 reveal d1">
+      FROM<br>
+      <span class="g">PERSIA</span><br>
+      TO THE<br>
+      <span class="s">DESERT.</span>
+    </h1>
+    <p class="sh-sub reveal d2">Five years. Hundreds of builds. One relentless obsession with getting every detail right on every truck that comes through our door.</p>
+    <div class="sh-scroll reveal d3">
+      <a href="#ch1" class="btn-o">Read the Story</a>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-t">
+    <div class="ticker-i">Juhrum Auto Accessories<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Est. 2019<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Industrial Area 4<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Sharjah UAE<span class="ticker-dot"></span></div>
+    <div class="ticker-i">American Truck Specialists<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Persian Craftsmanship<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Juhrum Auto Accessories<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Est. 2019<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Industrial Area 4<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Sharjah UAE<span class="ticker-dot"></span></div>
+    <div class="ticker-i">American Truck Specialists<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Persian Craftsmanship<span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<!-- CHAPTER 1: ORIGIN -->
+<div class="ed" id="ch1" style="background:var(--black);">
+  <div class="ch-marker">
+    <span class="ch-num">01</span>
+    <div class="ch-line"></div>
+    <span class="ch-title">The Origin</span>
+  </div>
+  <div class="two-col">
+    <div>
+      <h2 class="ed-h2 reveal">
+        BORN IN<br>
+        <span class="g">IRAN.</span><br>
+        BUILT IN<br>
+        <span class="s">SHARJAH.</span>
+      </h2>
+      <p class="ed-body reveal d1">The story of Juhrum begins not in the UAE, but in <em>Iran</em> — a country with one of the most passionate car cultures in the world. Founded by Hadi Ghanaatian, Juhrum carries the DNA of Persian attention to detail: <strong>the belief that anything worth doing is worth doing perfectly.</strong></p>
+      <p class="ed-body reveal d2">When Hadi established the shop in Sharjah's Industrial Area 4, he brought that same obsession with him. He knew exactly what serious truck owners wanted — not just parts, but <strong>accessories that genuinely elevated their vehicle</strong>. Products chosen with care, fitted with precision, backed with knowledge.</p>
+      <p class="ed-body reveal d3">More than five years later, Juhrum has become <em>the go-to destination</em> for pickup truck owners across the UAE who refuse to compromise.</p>
+    </div>
+    <div style="position:relative; padding-bottom:32px;">
+      <div class="img-block reveal d1" style="aspect-ratio:3/4;" data-ph="FOUNDER PHOTO — Hadi Ghanaatian at the shop">
+        <canvas id="sc1"></canvas>
+        <div class="img-badge">
+          <div class="img-badge-n">5+</div>
+          <span class="img-badge-l">Years of<br>Excellence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PULL QUOTE -->
+<div class="pullquote">
+  <div class="pq-inner">
+    <div class="tag reveal" style="margin-bottom:28px;">The Philosophy</div>
+    <p class="pq-text reveal d1">
+      "SERIOUS TRUCKS<br>
+      DESERVE <span class="g">SERIOUS</span><br>
+      GEAR. NOTHING LESS."
+    </p>
+    <p class="pq-attr reveal d2">— Hadi Ghanaatian, Founder</p>
+  </div>
+</div>
+
+<!-- CHAPTER 2: THE ENVIRONMENT -->
+<div class="ed" style="background:var(--deep);">
+  <div class="ch-marker">
+    <span class="ch-num">02</span>
+    <div class="ch-line"></div>
+    <span class="ch-title">The Environment</span>
+  </div>
+  <div class="two-col flip">
+    <div>
+      <h2 class="ed-h2 reveal">
+        BUILT FOR<br>
+        <span class="g">UAE</span><br>
+        <span class="s">TERRAIN.</span>
+      </h2>
+      <p class="ed-body reveal d1">The UAE is one of the most demanding environments on earth for vehicles and their accessories. Summer temperatures exceed 48°C. Sand finds its way into every seal, every joint, every mechanism. Off-road terrain can destroy inferior products within a season.</p>
+      <p class="ed-body reveal d2"><strong>Every product at Juhrum is selected with this environment in mind.</strong> Bed covers that seal against desert dust. Bull bars rated for rocky wadi approaches. PPF that withstands UAE heat and UV without yellowing or peeling. Thermal insulation that genuinely reduces cabin temperature.</p>
+      <p class="ed-body reveal d3">If it can't survive a full UAE summer, it doesn't earn a place in our showroom.</p>
+    </div>
+    <div style="position:relative; padding-bottom:32px;">
+      <div class="img-block reveal d1" style="aspect-ratio:3/4;" data-ph="PHOTO — Truck in UAE desert dunes, Sharjah off-road">
+        <canvas id="sc2"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 3: THE PRODUCT -->
+<div class="ed" style="background:var(--black);">
+  <div class="ch-marker">
+    <span class="ch-num">03</span>
+    <div class="ch-line"></div>
+    <span class="ch-title">The Products</span>
+  </div>
+  <div class="two-col">
+    <div>
+      <h2 class="ed-h2 reveal">
+        WHAT WE<br>
+        <span class="g">ACTUALLY</span><br>
+        <span class="s">DO.</span>
+      </h2>
+      <p class="ed-body reveal d1">Juhrum specialises in American pickup trucks — Ford F-Series, Dodge Ram, GMC Sierra, and the broader family of 4×4 off-roaders that UAE drivers love. Our range covers everything a serious truck owner could need:</p>
+      <p class="ed-body reveal d2"><em>Bed covers</em> — from retractable hardtops in 6063-T5 aluminium to soft tri-fold covers with weather-tight seals. <em>Exterior builds</em> — bull bars, running boards, roof racks, fender flares. <em>Electronics</em> — head units with Apple CarPlay, premium audio, cameras. <em>Protection</em> — self-healing PPF, thermal insulation, concealed protection. <em>Interior upholstery</em> — full leather seat and floor installations in any colour.</p>
+      <p class="ed-body reveal d3">And because we source directly from manufacturers, <strong>our prices remain competitive without compromising on quality.</strong> That's the promise Hadi made when he opened the doors — and it's the promise Juhrum keeps every day.</p>
+      <div class="reveal d4" style="margin-top:36px;">
+        <a href="products.html" class="btn-g" data-tip="Products"><span>Browse Products</span><span>→</span></a>
+      </div>
+    </div>
+    <div style="position:relative; padding-bottom:32px;">
+      <div class="img-block reveal d1" style="aspect-ratio:3/4;" data-ph="PHOTO — Product range display / showroom shelving">
+        <canvas id="sc3"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<div class="values">
+  <div class="values-inner">
+    <h2 class="values-h reveal">THE <span class="g">JUHRUM</span><br>STANDARD.</h2>
+    <div class="values-grid">
+      <div class="vcard reveal">
+        <div class="vcard-n">01</div>
+        <div class="vcard-title">Precision Fit</div>
+        <p class="vcard-body">Every accessory sourced specifically for American pickup trucks. We know every model, every spec, every year. Perfect fitment — no adapters, no guesswork, every time.</p>
+      </div>
+      <div class="vcard reveal d1">
+        <div class="vcard-n">02</div>
+        <div class="vcard-title">Fair Pricing</div>
+        <p class="vcard-body">Direct supplier relationships mean we eliminate the middleman. Premium quality products at prices that don't make you choose between good gear and a fair deal.</p>
+      </div>
+      <div class="vcard reveal d2">
+        <div class="vcard-n">03</div>
+        <div class="vcard-title">Professional Installation</div>
+        <p class="vcard-body">We don't just sell — we fit. Every product installed by our technical team to factory-finish standard. If it's not right, we make it right.</p>
+      </div>
+      <div class="vcard reveal d1">
+        <div class="vcard-n">04</div>
+        <div class="vcard-title">UAE-Proven</div>
+        <p class="vcard-body">Five years of UAE desert, heat, and sand have tested every product we stock. If it's in our showroom, it's earned its place by surviving this environment.</p>
+      </div>
+      <div class="vcard reveal d2">
+        <div class="vcard-n">05</div>
+        <div class="vcard-title">Expert Guidance</div>
+        <p class="vcard-body">Not sure what you need? Our team knows trucks inside out. Come in and talk to us — we'll recommend exactly what fits your truck, your driving, and your budget.</p>
+      </div>
+      <div class="vcard reveal d3">
+        <div class="vcard-n">06</div>
+        <div class="vcard-title">Word of Mouth</div>
+        <p class="vcard-body">Our reputation has been built entirely by customers who came back, and customers who sent their friends. No shortcuts. Just consistently excellent work, year after year.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NUMBERS -->
+<div class="nb">
+  <div class="nb-grid">
+    <div class="nb-item reveal"><span class="nb-n" data-count="5" data-suffix="+">0+</span><span class="nb-l">Years Active</span></div>
+    <div class="nb-item reveal d1"><span class="nb-n" data-count="100" data-suffix="+">0+</span><span class="nb-l">Products</span></div>
+    <div class="nb-item reveal d2"><span class="nb-n">UAE</span><span class="nb-l">Nationwide</span></div>
+    <div class="nb-item reveal d3"><span class="nb-n">4×4</span><span class="nb-l">Specialists</span></div>
+  </div>
+</div>
+
+<!-- NEXT PAGES -->
+<div class="next-page">
+  <a href="products.html" class="np-item" data-tip="Browse">
+    <div><div class="np-label">Browse</div><div class="np-title">Our Products</div></div>
+    <div class="np-arrow">→</div>
+  </a>
+  <a href="contact.html" class="np-item" data-tip="Visit">
+    <div><div class="np-label">Find Us</div><div class="np-title">Contact & Location</div></div>
+    <div class="np-arrow">→</div>
+  </a>
+  <a href="https://wa.me/9710503002898" class="np-item" target="_blank" data-tip="Chat">
+    <div><div class="np-label">Get a Quote</div><div class="np-title">WhatsApp Us</div></div>
+    <div class="np-arrow">↗</div>
+  </a>
+</div>
+
+<footer class="jfoot">
+  <div class="jfoot-logo">JUHR<b>UM</b></div>
+  <div class="jfoot-tag">Desert Iron — Est. 2019</div>
+  <div class="jfoot-copy">© 2025 Juhrum Auto Accessories, Sharjah UAE</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// hero canvas — dust particles
+(function(){
+  const canvas=document.getElementById('storyCanvas');
+  if(!canvas)return;
+  const R=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  R.setPixelRatio(Math.min(devicePixelRatio,1.5));
+  R.setSize(innerWidth,innerHeight);
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,1000);
+  cam.position.z=5;
+  const N=1800;
+  const pos=new Float32Array(N*3);
+  for(let i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*20;pos[i*3+1]=(Math.random()-.5)*12;pos[i*3+2]=(Math.random()-.5)*8;}
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const mat=new THREE.PointsMaterial({color:0xC49A38,size:.04,transparent:true,opacity:.35,sizeAttenuation:true});
+  const pts=new THREE.Points(geo,mat);
+  scene.add(pts);
+  const clk=new THREE.Clock();
+  (function animate(){
+    requestAnimationFrame(animate);
+    const t=clk.getElapsedTime();
+    pts.rotation.y=t*.015; pts.rotation.x=Math.sin(t*.08)*.04;
+    R.render(scene,cam);
+  })();
+  window.addEventListener('resize',()=>{R.setSize(innerWidth,innerHeight);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();});
+})();
+
+// story image 3D scenes
+function makeScene(id, type){
+  const canvas=document.getElementById(id);
+  if(!canvas)return;
+  const R=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  R.setPixelRatio(Math.min(devicePixelRatio,1.5));
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(52,1,.1,100); cam.position.z=4;
+  scene.add(new THREE.AmbientLight(0xffffff,.12));
+  const pl=new THREE.PointLight(0xC49A38,2.5,10); pl.position.set(3,3,2); scene.add(pl);
+  scene.add(new THREE.PointLight(0xffffff,.5,8)).position.set(-2,-1,2);
+
+  const mat=new THREE.MeshStandardMaterial({color:0x1a1410,metalness:.7,roughness:.3});
+  const gm=new THREE.MeshStandardMaterial({color:0xC49A38,metalness:.9,roughness:.15,emissive:0xC49A38,emissiveIntensity:.2});
+
+  let mesh;
+  if(type==='truck'){
+    // assembled truck silhouette
+    const grp=new THREE.Group();
+    grp.add(Object.assign(new THREE.Mesh(new THREE.BoxGeometry(.9,.55,.48),mat),{position:{x:-.3,y:.32,z:0}}).translateX(0));
+    const cab=new THREE.Mesh(new THREE.BoxGeometry(.9,.55,.48),mat); cab.position.set(-.3,.32,0); grp.add(cab);
+    const bed=new THREE.Mesh(new THREE.BoxGeometry(1.0,.16,.95),mat); bed.position.set(.55,.14,0); grp.add(bed);
+    const ch=new THREE.Mesh(new THREE.BoxGeometry(2,.12,.95),mat); ch.position.set(.1,-.04,0); grp.add(ch);
+    const bc=new THREE.Mesh(new THREE.BoxGeometry(1.0,.07,.95),gm); bc.position.set(.55,.25,0); grp.add(bc);
+    const bb=new THREE.Mesh(new THREE.BoxGeometry(.055,.46,.88),gm); bb.position.set(-.96,.12,0); grp.add(bb);
+    [-.52,.52].forEach(x=>[-.5,.5].forEach(z=>{
+      const w=new THREE.Mesh(new THREE.CylinderGeometry(.2,.2,.11,16),mat); w.rotation.x=Math.PI/2; w.position.set(x,-.21,z); grp.add(w);
+    }));
+    mesh=grp; scene.add(grp);
+  } else if(type==='desert'){
+    // abstract dune shapes
+    const grp=new THREE.Group();
+    for(let i=0;i<5;i++){
+      const g=new THREE.SphereGeometry(.5+Math.random()*.4,12,8);
+      const m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:0x2a1e0a,metalness:.1,roughness:.9}));
+      m.scale.y=.3+Math.random()*.3;
+      m.position.set((Math.random()-.5)*2.5, -.5, (Math.random()-.5)*.8);
+      grp.add(m);
+    }
+    // truck outline
+    const outline=new THREE.Mesh(new THREE.BoxGeometry(1.6,.6,.5),new THREE.MeshStandardMaterial({color:0x1a1610,metalness:.8,roughness:.2}));
+    outline.position.set(0,.2,0); grp.add(outline);
+    mesh=grp; scene.add(grp);
+  } else {
+    // product display — stacked boxes
+    const grp=new THREE.Group();
+    [0,.35,-.35].forEach((y,i)=>{
+      const m=new THREE.Mesh(new THREE.BoxGeometry(1.6-.2*i,.18,1-.1*i),i===0?gm:mat);
+      m.position.y=y; grp.add(m);
+    });
+    mesh=grp; scene.add(grp);
+  }
+
+  const upd=()=>{
+    const w=canvas.parentElement.offsetWidth||300;
+    const h=canvas.parentElement.offsetHeight||400;
+    R.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix();
+  };
+  upd();
+  const clk=new THREE.Clock();
+  (function animate(){
+    requestAnimationFrame(animate);
+    const t=clk.getElapsedTime();
+    if(mesh){mesh.rotation.y=Math.sin(t*.25)*.35+.2; mesh.rotation.x=Math.sin(t*.18)*.06;}
+    R.render(scene,cam);
+  })();
+  window.addEventListener('resize',upd);
+}
+makeScene('sc1','truck');
+makeScene('sc2','desert');
+makeScene('sc3','product');
+</script>
+<script src="juhrum.js"></script>
+</body>
+</html>

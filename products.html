@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — Juhrum Auto Accessories</title>
+<meta name="description" content="Full catalogue of premium 4×4 and pickup truck accessories. Bed covers, exterior builds, PPF, audio, interior. Sharjah UAE.">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero {
+  padding: 160px 52px 96px;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid rgba(196,154,56,.07);
+}
+.ph-ambient {
+  position: absolute; right: -2%; top: -10%;
+  font-family: var(--fd); font-size: 28vw; letter-spacing: .06em;
+  color: rgba(196,154,56,.025); pointer-events: none; line-height: 1;
+}
+.ph-h1 {
+  font-family: var(--fd); font-size: clamp(72px, 11vw, 168px);
+  line-height: .88; letter-spacing: .02em; color: var(--white);
+}
+.ph-h1 .g { color: var(--gold); }
+.ph-h1 .s { -webkit-text-stroke: 1px rgba(237,236,231,.14); color: transparent; display: block; }
+.ph-sub {
+  font-size: 14px; font-weight: 300; color: var(--silver);
+  max-width: 460px; line-height: 1.8; margin-top: 24px; letter-spacing: .015em;
+}
+.ph-cta { margin-top: 40px; }
+
+/* ── FILTER ── */
+.filter-wrap {
+  padding: 48px 52px 44px;
+  display: flex; gap: 10px; flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  max-width: 1400px; margin: 0 auto;
+}
+.fb {
+  font-family: var(--fu); font-size: 10px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--dim); background: transparent;
+  border: 1px solid rgba(255,255,255,.07); padding: 10px 22px;
+  cursor: none; transition: all .3s;
+}
+.fb:hover, .fb.on { color: var(--gold); border-color: rgba(196,154,56,.28); background: rgba(196,154,56,.03); }
+
+/* ── PRODUCT GRID ── */
+.prod-wrap { padding: 0 52px 120px; }
+.prod-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; max-width: 1400px; margin: 0 auto;
+}
+.pcard {
+  position: relative; aspect-ratio: 3/4;
+  background: var(--surface); overflow: hidden; cursor: none;
+}
+.pcard canvas { position: absolute!important; inset:0; width:100%!important; height:100%!important; z-index:0; }
+.pc-ph2 {
+  position: absolute; inset: 0; z-index: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fu); font-size: 9px; letter-spacing: .14em;
+  color: rgba(196,154,56,.1); text-transform: uppercase; text-align: center; padding: 36px;
+}
+.pcard-ov {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(5,5,5,.97) 0%, rgba(5,5,5,.22) 55%, transparent 100%);
+}
+.pcard-glow {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(196,154,56,.09) 0%, transparent 58%);
+  transition: opacity .4s;
+}
+.pcard:hover .pcard-glow { opacity: 1; }
+.pcard-border {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  border: 1px solid transparent; transition: border-color .4s;
+}
+.pcard:hover .pcard-border { border-color: rgba(196,154,56,.22); }
+.pcard-idx {
+  position: absolute; top: 18px; right: 18px; z-index: 2;
+  font-family: var(--fd); font-size: 12px; color: rgba(196,154,56,.22); letter-spacing: .08em;
+}
+.pcard-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px; z-index: 2; }
+.pcard-cat {
+  font-family: var(--fu); font-size: 8px; letter-spacing: .32em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+}
+.pcard-name { font-family: var(--fd); font-size: 26px; letter-spacing: .04em; color: var(--white); line-height: 1; }
+.pcard-spec {
+  font-size: 11px; font-weight: 300; color: var(--dim); line-height: 1.65;
+  margin-top: 10px; max-height: 0; overflow: hidden;
+  transition: max-height .5s cubic-bezier(.76,0,.24,1), opacity .4s;
+  opacity: 0;
+}
+.pcard:hover .pcard-spec { max-height: 100px; opacity: 1; }
+.pcard-cta {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+  font-family: var(--fu); font-size: 10px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--gold); text-decoration: none;
+  transition: gap .3s;
+}
+.pcard-cta:hover { gap: 14px; }
+.pcard[data-hide] { display: none; }
+
+/* ── TRUCKS ── */
+.trucks { padding: 100px 52px; background: var(--surface); border-top: 1px solid rgba(196,154,56,.07); }
+.trucks-inner { max-width: 1400px; margin: 0 auto; }
+.trucks-h2 {
+  font-family: var(--fd); font-size: clamp(52px, 7vw, 100px);
+  line-height: .9; letter-spacing: .02em; color: var(--white); margin-bottom: 60px;
+}
+.trucks-h2 .g { color: var(--gold); }
+.trucks-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.tcard {
+  background: var(--black); padding: 44px 28px;
+  border: 1px solid rgba(196,154,56,.05);
+  transition: all .3s; position: relative; overflow: hidden;
+}
+.tcard::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .45s cubic-bezier(.76,0,.24,1);
+}
+.tcard:hover::after { transform: scaleX(1); }
+.tcard:hover { background: rgba(196,154,56,.03); }
+.tcard-icon { margin-bottom: 20px; opacity: .35; }
+.tcard-name { font-family: var(--fd); font-size: 22px; letter-spacing: .05em; color: var(--white); margin-bottom: 8px; }
+.tcard-models { font-family: var(--fu); font-size: 11px; letter-spacing: .14em; color: var(--dim); line-height: 1.7; }
+
+/* ── CTA BAND ── */
+.cta-band {
+  padding: 100px 52px; background: var(--gold);
+  position: relative; overflow: hidden;
+}
+.cta-band::before {
+  content: 'GET IN TOUCH'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: var(--fd); font-size: 14vw; letter-spacing: .08em;
+  color: rgba(0,0,0,.06); white-space: nowrap; pointer-events: none; line-height: 1;
+}
+.cta-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 1;
+}
+.cta-h2 {
+  font-family: var(--fd); font-size: clamp(52px, 8vw, 112px);
+  line-height: .88; letter-spacing: .02em; color: var(--black);
+}
+.cta-right { display: flex; flex-direction: column; gap: 14px; align-items: flex-end; }
+.cta-body { font-size: 14px; font-weight: 300; color: rgba(0,0,0,.5); max-width: 300px; text-align: right; line-height: 1.72; margin-bottom: 8px; }
+
+@media(max-width:900px){
+  .page-hero,.filter-wrap,.prod-wrap,.trucks,.cta-band{padding-left:24px;padding-right:24px;}
+  .prod-grid{grid-template-columns:1fr 1fr;}
+  .trucks-grid{grid-template-columns:1fr 1fr;}
+  .cta-inner{flex-direction:column;align-items:flex-start;gap:40px;}
+  .cta-right{align-items:flex-start;}
+}
+@media(max-width:560px){.prod-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body class="noise">
+
+<div id="jcursor"></div>
+<div id="jring"></div>
+<div id="jlabel"></div>
+
+<nav class="jnav">
+  <a href="index.html" class="jnav-logo"><img src="images/logo.png" alt="Juhrum Auto Accessories" style="height:26px;width:auto;filter:brightness(0) invert(1);vertical-align:middle;"></a>
+  <ul class="jnav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html" class="cur">Products</a></li>
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/9710503002898" class="jnav-wa" data-tip="WhatsApp">WhatsApp Us</a>
+</nav>
+
+<div class="page-hero">
+  <div class="ph-ambient">CAT</div>
+  <div class="tag reveal" style="margin-bottom:22px;">Full Catalogue</div>
+  <h1 class="ph-h1 reveal d1">
+    EVERY<br>
+    <span class="g">ACCESSORY.</span>
+    <span class="s">EVERY TRUCK.</span>
+  </h1>
+  <p class="ph-sub reveal d2">From hardtop bed covers to full exterior transformations — browse our complete range. No prices listed: every build is unique. Message us for a personalised quote.</p>
+  <div class="ph-cta reveal d3">
+    <a href="https://wa.me/9710503002898" class="btn-g" target="_blank" data-tip="WhatsApp"><span>Get a Quote on WhatsApp</span><span>→</span></a>
+  </div>
+</div>
+
+<div class="filter-wrap">
+  <button class="fb on" data-f="all">All</button>
+  <button class="fb" data-f="beds">Bed Covers</button>
+  <button class="fb" data-f="exterior">Exterior</button>
+  <button class="fb" data-f="interior">Interior</button>
+  <button class="fb" data-f="electronics">Electronics</button>
+  <button class="fb" data-f="protection">Protection</button>
+  <button class="fb" data-f="custom">Custom</button>
+</div>
+
+<div class="prod-wrap">
+<div class="prod-grid" id="pgrid">
+
+  <div class="pcard reveal" data-cat="beds" data-tip="Inquire">
+    <canvas id="p0"></canvas>
+    <div class="pc-ph2">HARDTOP BED COVER</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">01</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Bed Covers</div>
+      <div class="pcard-name">Hardtop Retractable</div>
+      <div class="pcard-spec">High-grade 6063-T5 aluminium slats. Powder-coated matte black. EPDM rubber weather seals. Supports up to 500 lbs distributed load. T-slot side rails for rack mounting. Fits F-150, Dodge Ram 1500/2500, GMC Sierra.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal d1" data-cat="beds" data-tip="Inquire">
+    <canvas id="p1"></canvas>
+    <div class="pc-ph2">SOFT TRI-FOLD COVER</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">02</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Bed Covers</div>
+      <div class="pcard-name">Soft Tri-Fold</div>
+      <div class="pcard-spec">Heavy-duty vinyl outer, foam core. Tool-free installation on most models. Velcro and buckle closure. Clamp-on mounting, no drilling required. Fits Ford F-Series, Dodge Ram, Toyota Tundra.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal d2" data-cat="exterior" data-tip="Inquire">
+    <canvas id="p2"></canvas>
+    <div class="pc-ph2">BULL BAR</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">03</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Exterior</div>
+      <div class="pcard-name">Bull Bars</div>
+      <div class="pcard-spec">Heavy-duty mild steel and stainless variants. Powder-coated black or polished finish. Integrated light mounting points. Brush guard and nudge bar options. Fits Ford F-150, Dodge Ram, GMC Sierra, Chevy Silverado.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal" data-cat="exterior" data-tip="Inquire">
+    <canvas id="p3"></canvas>
+    <div class="pc-ph2">SIDE STEPS / RUNNING BOARDS</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">04</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Exterior</div>
+      <div class="pcard-name">Running Boards</div>
+      <div class="pcard-spec">Aluminium and steel side steps. Power running boards available. Drop step options for lifted trucks. Non-slip step pads. Direct bolt-on fit for Ford, Dodge, GMC — no cutting required.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal d1" data-cat="exterior" data-tip="Inquire">
+    <canvas id="p4"></canvas>
+    <div class="pc-ph2">ROOF RACK</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">05</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Exterior</div>
+      <div class="pcard-name">Roof Racks</div>
+      <div class="pcard-spec">Cab-mounted and full-length systems. Powder-coated steel, 150 kg load capacity. LED light bar mounting channels. Universal fit with model-specific brackets available.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal d2" data-cat="interior" data-tip="Inquire">
+    <canvas id="p5"></canvas>
+    <div class="pc-ph2">SEAT UPHOLSTERY</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">06</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Interior</div>
+      <div class="pcard-name">Seat Upholstery</div>
+      <div class="pcard-spec">Auto seat upholstery in full leather or leatherette. Custom colours and stitching patterns. Front and rear coverage. Airbag-compatible cutouts. Installed to factory finish standard.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal" data-cat="interior" data-tip="Inquire">
+    <canvas id="p6"></canvas>
+    <div class="pc-ph2">FLOOR LEATHER / MATS</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">07</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Interior</div>
+      <div class="pcard-name">Floor Leather & Mats</div>
+      <div class="pcard-spec">Full floor leather installation in all colours. Heavy-duty all-weather mats with model-specific fit. Anti-slip backing. Covers front, rear, and cargo area. UAE desert-proof construction.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal d1" data-cat="electronics" data-tip="Inquire">
+    <canvas id="p7"></canvas>
+    <div class="pc-ph2">SCREENS / AUDIO</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">08</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Electronics</div>
+      <div class="pcard-name">Screens & Audio</div>
+      <div class="pcard-spec">Head unit upgrades with Apple CarPlay, Android Auto. Premium audio: amplifiers, subwoofers, component speakers. Reverse cameras, dashcams, parking sensors. Full professional installation by our technical team.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal d2" data-cat="protection" data-tip="Inquire">
+    <canvas id="p8"></canvas>
+    <div class="pc-ph2">PPF / PAINT PROTECTION</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">09</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Protection</div>
+      <div class="pcard-name">PPF & Paint Protection</div>
+      <div class="pcard-spec">Self-healing paint protection film. Full front-end, bonnet, full-body options. Clear and matte finishes. Protects against stone chips, scratches, UV fade. UAE heat and dust tested.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal" data-cat="protection" data-tip="Inquire">
+    <canvas id="p9"></canvas>
+    <div class="pc-ph2">THERMAL INSULATION</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">10</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Protection</div>
+      <div class="pcard-name">Thermal Insulation</div>
+      <div class="pcard-spec">All types of thermal insulation for engine bay, cab, and cargo area. Reduces interior heat significantly in UAE summer. Improves AC efficiency. Professionally installed with OEM-quality adhesion.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal d1" data-cat="protection" data-tip="Inquire">
+    <canvas id="p10"></canvas>
+    <div class="pc-ph2">CONCEALED PAINT PROTECTION</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">11</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Protection</div>
+      <div class="pcard-name">Concealed Protection</div>
+      <div class="pcard-spec">Concealed paint protection for high-impact areas — door edges, rockers, wheel arches. Invisible application. Protects resale value. Pairs perfectly with PPF for full coverage.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Request Price →</a>
+    </div>
+  </div>
+
+  <div class="pcard reveal d2" data-cat="custom" data-tip="Talk">
+    <canvas id="p11"></canvas>
+    <div class="pc-ph2">CUSTOM BUILD</div>
+    <div class="pcard-ov"></div><div class="pcard-glow"></div><div class="pcard-border"></div>
+    <div class="pcard-idx">12</div>
+    <div class="pcard-content">
+      <div class="pcard-cat">Custom</div>
+      <div class="pcard-name">Full Custom Builds</div>
+      <div class="pcard-spec">Have a vision? We source, spec, and install to your exact requirements. From single accessories to complete truck transformations — talk to our team and we'll make it happen.</div>
+      <a href="https://wa.me/9710503002898" class="pcard-cta" target="_blank">Let's Talk →</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- TRUCKS WE BUILD FOR -->
+<div class="trucks">
+  <div class="trucks-inner">
+    <h2 class="trucks-h2 reveal">TRUCKS WE<br><span class="g">BUILD FOR.</span></h2>
+    <div class="trucks-grid">
+      <div class="tcard reveal">
+        <div class="tcard-icon">
+          <svg width="52" height="32" viewBox="0 0 52 32" fill="none"><path d="M2 24L2 19L7 19L7 14L17 9L34 7L44 9L48 14L50 19L50 24" stroke="#C49A38" stroke-width="1.2" fill="none"/><circle cx="11" cy="26" r="3.5" stroke="#C49A38" stroke-width="1.2" fill="none"/><circle cx="41" cy="26" r="3.5" stroke="#C49A38" stroke-width="1.2" fill="none"/><rect x="7" y="13" width="11" height="7" stroke="#C49A38" stroke-width=".8" fill="none" opacity=".4"/></svg>
+        </div>
+        <div class="tcard-name">Ford F-Series</div>
+        <div class="tcard-models">F-150 · F-250 · F-350<br>Raptor · Tremor · Lightning</div>
+      </div>
+      <div class="tcard reveal d1">
+        <div class="tcard-icon">
+          <svg width="52" height="32" viewBox="0 0 52 32" fill="none"><path d="M2 24L2 18L6 18L9 13L18 8L36 7L46 11L50 17L50 24" stroke="#C49A38" stroke-width="1.2" fill="none"/><circle cx="12" cy="26" r="3.5" stroke="#C49A38" stroke-width="1.2" fill="none"/><circle cx="42" cy="26" r="3.5" stroke="#C49A38" stroke-width="1.2" fill="none"/><rect x="6" y="12" width="13" height="7" stroke="#C49A38" stroke-width=".8" fill="none" opacity=".4"/></svg>
+        </div>
+        <div class="tcard-name">Dodge Ram</div>
+        <div class="tcard-models">Ram 1500 · 2500 · 3500<br>TRX · Classic · Warlock</div>
+      </div>
+      <div class="tcard reveal d2">
+        <div class="tcard-icon">
+          <svg width="52" height="32" viewBox="0 0 52 32" fill="none"><path d="M3 24L3 18L7 18L10 12L22 8L38 7L47 11L50 18L50 24" stroke="#C49A38" stroke-width="1.2" fill="none"/><circle cx="12" cy="26" r="3.5" stroke="#C49A38" stroke-width="1.2" fill="none"/><circle cx="43" cy="26" r="3.5" stroke="#C49A38" stroke-width="1.2" fill="none"/></svg>
+        </div>
+        <div class="tcard-name">GMC / Chevrolet</div>
+        <div class="tcard-models">Sierra · Silverado 1500/2500<br>Canyon · Colorado</div>
+      </div>
+      <div class="tcard reveal d3">
+        <div class="tcard-icon">
+          <svg width="52" height="32" viewBox="0 0 52 32" fill="none"><path d="M2 24L2 17L6 17L9 11L24 7L42 7L48 11L50 18L50 24" stroke="#C49A38" stroke-width="1.2" fill="none"/><circle cx="11" cy="26" r="3.5" stroke="#C49A38" stroke-width="1.2" fill="none"/><circle cx="43" cy="26" r="3.5" stroke="#C49A38" stroke-width="1.2" fill="none"/><rect x="6" y="11" width="15" height="7" stroke="#C49A38" stroke-width=".8" fill="none" opacity=".4"/></svg>
+        </div>
+        <div class="tcard-name">Other 4×4s</div>
+        <div class="tcard-models">Toyota Tundra · Nissan Titan<br>Jeep Gladiator · And more</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <h2 class="cta-h2">DON'T SEE<br>WHAT YOU<br>NEED?</h2>
+    <div class="cta-right">
+      <p class="cta-body">We source products on request. If it exists and fits your truck, we can find it. Message us on WhatsApp and our team will get back to you the same day.</p>
+      <a href="https://wa.me/9710503002898" class="btn-dark" target="_blank" data-tip="Chat">Message on WhatsApp →</a>
+      <a href="contact.html" class="btn-o" style="color:rgba(0,0,0,.5);border-color:rgba(0,0,0,.2);">Find Our Showroom</a>
+    </div>
+  </div>
+</div>
+
+<footer class="jfoot">
+  <div class="jfoot-logo">JUHR<b>UM</b></div>
+  <a href="index.html" style="font-family:var(--fu);font-size:9px;letter-spacing:.2em;color:var(--dim);text-decoration:none;text-transform:uppercase;transition:color .3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--dim)'">← Back to Home</a>
+  <div class="jfoot-copy">© 2025 Juhrum Auto Accessories, Sharjah UAE</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// FILTER
+document.querySelectorAll('.fb').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    const f=btn.dataset.f;
+    document.querySelectorAll('.pcard').forEach(c=>{
+      c.style.display=(f==='all'||c.dataset.cat===f)?'block':'none';
+    });
+  });
+});
+
+// 3D card scenes
+const cfgs=[
+  {id:'p0',shape:'box',dims:[2.2,.16,1.1],color:0x2a2218,acc:0xC49A38},
+  {id:'p1',shape:'softbox',color:0x1a1a14,acc:0xAAA060},
+  {id:'p2',shape:'ring',color:0x181818,acc:0xAAAAAA},
+  {id:'p3',shape:'steps',color:0x141414,acc:0x888888},
+  {id:'p4',shape:'rack',color:0x111111,acc:0x999999},
+  {id:'p5',shape:'seat',color:0x1a1008,acc:0xAA7733},
+  {id:'p6',shape:'plane',color:0x100c08,acc:0x997744},
+  {id:'p7',shape:'sphere',color:0x08080e,acc:0x4455CC},
+  {id:'p8',shape:'film',color:0x080808,acc:0xC49A38},
+  {id:'p9',shape:'heat',color:0x0e0808,acc:0xCC4422},
+  {id:'p10',shape:'ico',color:0x0a0a0a,acc:0xC49A38},
+  {id:'p11',shape:'star',color:0x060606,acc:0xC49A38},
+];
+
+cfgs.forEach(cfg=>{
+  const canvas=document.getElementById(cfg.id);
+  if(!canvas)return;
+  const R=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  R.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(50,1,.1,100);
+  cam.position.z=3.5;
+  scene.add(new THREE.AmbientLight(0xffffff,.12));
+  const pl=new THREE.PointLight(cfg.acc,2.2,8); pl.position.set(2,2,2); scene.add(pl);
+  scene.add(new THREE.PointLight(0xffffff,.4,8)).position.set(-2,-1,1);
+  const mat=new THREE.MeshStandardMaterial({color:cfg.color,metalness:.75,roughness:.28,emissive:cfg.acc,emissiveIntensity:.07});
+  const gMat=new THREE.MeshStandardMaterial({color:cfg.acc,metalness:.9,roughness:.15,emissive:cfg.acc,emissiveIntensity:.25});
+  let mesh,extra=[];
+  if(cfg.shape==='box'){
+    mesh=new THREE.Mesh(new THREE.BoxGeometry(...cfg.dims),mat); scene.add(mesh);
+    const rail=new THREE.MeshStandardMaterial({color:cfg.acc,metalness:.95,roughness:.1});
+    [-cfg.dims[2]/2+.02,cfg.dims[2]/2-.02].forEach(z=>{
+      const r=new THREE.Mesh(new THREE.BoxGeometry(cfg.dims[0]+.06,.03,.03),rail); r.position.z=z; scene.add(r);
+    });
+  } else if(cfg.shape==='softbox'){
+    mesh=new THREE.Mesh(new THREE.BoxGeometry(2.0,.22,1.0),mat); scene.add(mesh);
+    const fold=new THREE.Mesh(new THREE.BoxGeometry(.66,.22,1.0),new THREE.MeshStandardMaterial({color:cfg.acc,metalness:.5,roughness:.5,emissive:cfg.acc,emissiveIntensity:.1}));
+    fold.position.x=-.67; scene.add(fold);
+  } else if(cfg.shape==='ring'){
+    mesh=new THREE.Mesh(new THREE.TorusGeometry(.9,.07,8,28),mat); scene.add(mesh);
+    const bar=new THREE.Mesh(new THREE.BoxGeometry(.1,.9,1.2),mat); bar.position.x=-.95; scene.add(bar);
+  } else if(cfg.shape==='steps'){
+    mesh=new THREE.Mesh(new THREE.BoxGeometry(2,.08,.35),mat); scene.add(mesh);
+    for(let i=0;i<3;i++){
+      const s=new THREE.Mesh(new THREE.BoxGeometry(.08,.24,.35),mat); s.position.x=-.7+i*.7; s.position.y=-.16; scene.add(s);
+    }
+  } else if(cfg.shape==='rack'){
+    mesh=new THREE.Mesh(new THREE.BoxGeometry(2,.06,1.1),mat); scene.add(mesh);
+    for(let x=-1;x<=1;x+=.5){
+      const r=new THREE.Mesh(new THREE.BoxGeometry(.04,.2,.04),mat); r.position.set(x,.14,0); scene.add(r);
+    }
+  } else if(cfg.shape==='seat'){
+    mesh=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.2,.16),mat); scene.add(mesh);
+    const seat=new THREE.Mesh(new THREE.BoxGeometry(1.2,.16,.9),mat); seat.position.set(0,-.68,.38); scene.add(seat);
+  } else if(cfg.shape==='plane'){
+    mesh=new THREE.Mesh(new THREE.PlaneGeometry(2.2,1.4,6,4),new THREE.MeshStandardMaterial({color:cfg.color,metalness:.5,roughness:.45,side:THREE.DoubleSide,emissive:cfg.acc,emissiveIntensity:.05})); scene.add(mesh);
+  } else if(cfg.shape==='sphere'){
+    mesh=new THREE.Mesh(new THREE.SphereGeometry(.88,32,32),new THREE.MeshStandardMaterial({color:cfg.color,metalness:.85,roughness:.08,emissive:cfg.acc,emissiveIntensity:.35})); scene.add(mesh);
+  } else if(cfg.shape==='film'){
+    mesh=new THREE.Mesh(new THREE.PlaneGeometry(2,.04,1,1),gMat); scene.add(mesh);
+    for(let y=-.5;y<=.5;y+=.2){const f=new THREE.Mesh(new THREE.PlaneGeometry(2,.003),mat); f.position.y=y; scene.add(f);}
+  } else if(cfg.shape==='heat'){
+    mesh=new THREE.Mesh(new THREE.BoxGeometry(1.6,.06,1.2),mat); scene.add(mesh);
+    for(let i=0;i<5;i++){const w=new THREE.Mesh(new THREE.BoxGeometry(1.6,.003,.003),new THREE.MeshStandardMaterial({color:cfg.acc,emissive:cfg.acc,emissiveIntensity:.6})); w.position.z=-.24+i*.12; scene.add(w);}
+  } else if(cfg.shape==='ico'){
+    const g=new THREE.IcosahedronGeometry(.9,1);
+    mesh=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:cfg.color,metalness:.9,roughness:.15,emissive:cfg.acc,emissiveIntensity:.22}));
+    mesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(g),new THREE.LineBasicMaterial({color:cfg.acc,opacity:.28,transparent:true})));
+    scene.add(mesh);
+  } else if(cfg.shape==='star'){
+    mesh=new THREE.Mesh(new THREE.OctahedronGeometry(1,0),new THREE.MeshStandardMaterial({color:cfg.color,metalness:.88,roughness:.12,emissive:cfg.acc,emissiveIntensity:.3,wireframe:false}));
+    mesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.OctahedronGeometry(1,0)),new THREE.LineBasicMaterial({color:cfg.acc,opacity:.25,transparent:true})));
+    scene.add(mesh);
+  }
+
+  const upd=()=>{
+    const w=canvas.parentElement.offsetWidth||240;
+    const h=canvas.parentElement.offsetHeight||320;
+    R.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix();
+  };
+  upd();
+  let hov=false;
+  const parent=canvas.closest('.pcard');
+  if(parent){parent.addEventListener('mouseenter',()=>hov=true);parent.addEventListener('mouseleave',()=>hov=false);}
+  const clk=new THREE.Clock();
+  (function animate(){
+    requestAnimationFrame(animate);
+    const t=clk.getElapsedTime();
+    if(mesh){mesh.rotation.y=t*.38+(hov?.18:0);mesh.rotation.x=Math.sin(t*.28)*.13;}
+    pl.intensity=hov?Math.sin(t*4)*.5+2.8:2.2;
+    R.render(scene,cam);
+  })();
+  window.addEventListener('resize',upd);
+});
+
+// 3d tilt
+document.querySelectorAll('.pcard').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const nx=((e.clientX-r.left)/r.width-.5)*2;
+    const ny=((e.clientY-r.top)/r.height-.5)*2;
+    card.style.transform=`perspective(900px) rotateY(${nx*8}deg) rotateX(${-ny*6}deg)`;
+    card.querySelector('.pcard-glow').style.setProperty('--gx',((e.clientX-r.left)/r.width*100)+'%');
+    card.querySelector('.pcard-glow').style.setProperty('--gy',((e.clientY-r.top)/r.height*100)+'%');
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transition='transform .7s cubic-bezier(.23,1,.32,1)';
+    card.style.transform='perspective(900px) rotateY(0) rotateX(0)';
+    setTimeout(()=>card.style.transition='',700);
+  });
+});
+</script>
+<script src="juhrum.js"></script>
+</body>
+</html>

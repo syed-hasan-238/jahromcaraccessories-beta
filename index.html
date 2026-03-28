@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juhrum Auto Accessories — Desert Iron, Sharjah UAE</title>
+<meta name="description" content="Premium 4×4 and pickup truck accessories. Bed covers, exterior builds, audio, PPF, upholstery. Sharjah UAE — Industrial Area 4. 4.7★ Google Rating. Trusted 5+ years.">
+<link rel="stylesheet" href="style.css">
+<style>
+#preload{position:fixed;inset:0;background:var(--black);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.pl-logo-wrap{overflow:hidden;}
+.pl-logo{font-family:var(--fd);font-size:clamp(44px,8vw,120px);letter-spacing:.12em;line-height:1;transform:translateY(110%);transition:transform 1s cubic-bezier(.76,0,.24,1) .1s;display:flex;align-items:center;gap:14px;}
+.pl-logo img{height:.78em;width:auto;filter:brightness(0) invert(1);}
+.pl-logo.up{transform:translateY(0);}
+.pl-bar-wrap{width:160px;height:1px;background:rgba(196,154,56,.15);margin-top:24px;overflow:hidden;}
+.pl-bar{height:100%;background:var(--gold);width:0;transition:width 1.5s cubic-bezier(.76,0,.24,1) .4s;}
+.pl-bar.go{width:100%;}
+.pl-sub{font-family:var(--fu);font-size:9px;letter-spacing:.36em;text-transform:uppercase;color:var(--dim);margin-top:16px;opacity:0;transition:opacity .5s .5s;}
+.pl-sub.show{opacity:1;}
+#preload.exit{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s cubic-bezier(.76,0,.24,1);}
+
+#hero{position:relative;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 80px;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 60% 35%,rgba(30,20,8,.65) 0%,transparent 60%),linear-gradient(135deg,#0a0805 0%,#050505 50%,#080808 100%);}
+.hero-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(5,5,5,.87) 0%,rgba(5,5,5,.42) 50%,rgba(5,5,5,.8) 100%);}
+.hero-veil::after{content:'';position:absolute;bottom:0;left:0;right:0;height:35%;background:linear-gradient(to top,var(--black),transparent);}
+#jcanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;}
+.hero-content{position:relative;z-index:3;pointer-events:none;}
+.h-tag{font-family:var(--fu);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:20px;opacity:0;transform:translateY(14px);transition:opacity .8s .1s,transform .8s .1s;}
+.h-tag b{width:28px;height:1px;background:var(--gold);display:block;flex-shrink:0;}
+.h-tag.in{opacity:1;transform:none;}
+.h-h1{font-family:var(--fd);font-size:clamp(80px,13vw,188px);line-height:.88;letter-spacing:.022em;color:var(--white);}
+.h-h1 .row{overflow:hidden;display:block;}
+.h-h1 .inner{display:block;transform:translateY(110%);transition:transform 1.1s cubic-bezier(.76,0,.24,1);}
+.h-h1 .inner.up{transform:translateY(0);}
+.h-h1 .g{color:var(--gold);}
+.h-h1 .s{-webkit-text-stroke:1px rgba(237,236,231,.18);color:transparent;}
+.h-sub{font-size:15px;font-weight:300;color:var(--silver);letter-spacing:.018em;max-width:400px;line-height:1.8;margin-top:28px;opacity:0;transform:translateY(16px);transition:opacity .9s .75s,transform .9s .75s;}
+.h-sub.in{opacity:1;transform:none;}
+.h-ctas{display:flex;gap:20px;align-items:center;margin-top:44px;pointer-events:all;opacity:0;transform:translateY(14px);transition:opacity .9s .95s,transform .9s .95s;}
+.h-ctas.in{opacity:1;transform:none;}
+.h-stats{position:absolute;right:52px;top:50%;transform:translateY(-50%);z-index:3;display:flex;flex-direction:column;align-items:flex-end;gap:30px;opacity:0;transition:opacity 1.2s 1.2s;}
+.h-stats.in{opacity:1;}
+.hst{text-align:right;}
+.hst-n{font-family:var(--fd);font-size:44px;color:var(--gold);line-height:1;}
+.hst-l{font-family:var(--fu);font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin-top:3px;}
+.hst-div{width:1px;height:26px;background:linear-gradient(var(--gold-lo),transparent);margin-left:auto;}
+.h-scroll{position:absolute;right:52px;bottom:84px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transition:opacity 1s 1.4s;}
+.h-scroll.in{opacity:1;}
+.h-scroll-line{width:1px;height:52px;background:linear-gradient(var(--gold),transparent);animation:pulse 2.2s ease infinite;}
+.h-scroll span{font-family:var(--fu);font-size:8px;letter-spacing:.32em;text-transform:uppercase;color:var(--dim);writing-mode:vertical-rl;}
+@keyframes pulse{0%,100%{opacity:.9;transform:scaleY(1)}50%{opacity:.2;transform:scaleY(.4)}}
+
+/* VIDEO HINT OVERLAY */
+.hero-video-hint{position:absolute;bottom:24px;left:52px;z-index:3;font-family:var(--fu);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(196,154,56,.3);pointer-events:none;}
+
+.ticker{background:var(--gold);overflow:hidden;padding:17px 0;position:relative;z-index:4;}
+.ticker-t{display:flex;white-space:nowrap;animation:jTicker 28s linear infinite;}
+.ticker-i{font-family:var(--fd);font-size:12px;letter-spacing:.26em;color:var(--black);padding:0 44px;display:flex;align-items:center;gap:44px;flex-shrink:0;}
+.ticker-dot{width:4px;height:4px;border-radius:50%;background:rgba(0,0,0,.3);}
+@keyframes jTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.jnav-logo img{height:26px;width:auto;filter:brightness(0) invert(1);vertical-align:middle;}
+
+.chapter{padding:120px 52px;position:relative;overflow:hidden;}
+.ch-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.ch-h2{font-family:var(--fd);font-size:clamp(52px,7vw,104px);line-height:.9;letter-spacing:.02em;color:var(--white);margin-bottom:28px;}
+.ch-h2 .g{color:var(--gold);}.ch-h2 .s{-webkit-text-stroke:1px rgba(237,236,231,.14);color:transparent;display:block;}
+.ch-body{font-size:15px;font-weight:300;line-height:1.85;color:var(--silver);letter-spacing:.015em;margin-bottom:18px;}
+.ch-body strong{color:var(--white);font-weight:400;}.ch-body em{color:var(--gold);font-style:normal;}
+
+.shop-img-wrap{position:relative;padding-bottom:24px;padding-right:24px;}
+.shop-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+.shop-img-badge{position:absolute;bottom:0;right:0;z-index:2;background:var(--gold);padding:18px 20px;}
+.sib-n{font-family:var(--fd);font-size:40px;color:var(--black);line-height:1;}
+.sib-l{font-family:var(--fu);font-size:8px;letter-spacing:.18em;color:rgba(0,0,0,.6);display:block;margin-top:2px;}
+
+.contact-strip{display:flex;border-top:1px solid rgba(196,154,56,.08);border-bottom:1px solid rgba(196,154,56,.08);background:var(--surface);position:relative;z-index:2;}
+.cs-item{flex:1;padding:52px 44px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;border-right:1px solid rgba(255,255,255,.04);transition:background .35s;}
+.cs-item:last-child{border-right:none;}.cs-item:hover{background:rgba(196,154,56,.04);}
+.cs-label{font-family:var(--fu);font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.cs-title{font-family:var(--fd);font-size:30px;letter-spacing:.06em;color:var(--white);}
+.cs-arrow{font-family:var(--fd);font-size:28px;color:rgba(196,154,56,.28);transition:transform .3s,color .3s;}
+.cs-item:hover .cs-arrow{transform:translateX(7px);color:var(--gold);}
+
+#products-prev{position:relative;z-index:2;background:var(--black);padding:120px 52px;}
+.pp-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;max-width:1400px;margin-left:auto;margin-right:auto;}
+.pp-h2{font-family:var(--fd);font-size:clamp(52px,7.5vw,108px);line-height:.9;letter-spacing:.02em;color:var(--white);}
+.pp-h2 .g{color:var(--gold);}.pp-h2 .s{-webkit-text-stroke:1px rgba(237,236,231,.13);color:transparent;display:block;}
+.pp-right{max-width:260px;}.pp-sub{font-size:13px;font-weight:300;color:var(--dim);line-height:1.75;text-align:right;margin-bottom:20px;}
+.pp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1400px;margin:0 auto 48px;}
+.pc3{position:relative;aspect-ratio:3/4;background:var(--surface);overflow:hidden;cursor:none;}
+.pc3-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.23,1,.32,1);z-index:0;}
+.pc3:hover .pc3-img{transform:scale(1.04);}
+.pc3-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fu);font-size:9px;letter-spacing:.14em;color:rgba(196,154,56,.1);text-transform:uppercase;text-align:center;padding:36px;z-index:0;}
+.pc3 canvas{position:absolute!important;inset:0;width:100%!important;height:100%!important;z-index:0;}
+.pc3-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(5,5,5,.97) 0%,rgba(5,5,5,.22) 55%,transparent 100%);}
+.glow{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(196,154,56,.09) 0%,transparent 60%);transition:opacity .4s;}
+.pc3-border{position:absolute;inset:0;z-index:3;pointer-events:none;border:1px solid transparent;transition:border-color .4s;}
+.pc3:hover .pc3-border{border-color:rgba(196,154,56,.22);}
+.pc3-idx{position:absolute;top:18px;right:18px;z-index:2;font-family:var(--fd);font-size:12px;color:rgba(196,154,56,.22);letter-spacing:.08em;}
+.pc3-content{position:absolute;bottom:0;left:0;right:0;padding:28px 24px;z-index:2;}
+.pc3-cat{font-family:var(--fu);font-size:8px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.pc3-name{font-family:var(--fd);font-size:28px;letter-spacing:.04em;color:var(--white);line-height:1;}
+.pc3-desc{font-size:12px;font-weight:300;color:var(--dim);line-height:1.65;margin-top:10px;max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.76,0,.24,1),opacity .4s;opacity:0;}
+.pc3:hover .pc3-desc{max-height:90px;opacity:1;}
+.pc3-cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-family:var(--fu);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:gap .3s;}
+.pc3-cta:hover{gap:14px;}
+.pp-more{max-width:1400px;margin:0 auto;text-align:center;}
+
+.nb{position:relative;z-index:2;background:var(--gold);padding:72px 52px;overflow:hidden;}
+.nb::before{content:'JUHRUM';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:20vw;letter-spacing:.1em;color:rgba(0,0,0,.05);white-space:nowrap;pointer-events:none;line-height:1;}
+.nb-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.nb-item{text-align:center;padding:0 20px;border-right:1px solid rgba(0,0,0,.12);}
+.nb-item:last-child{border-right:none;}
+.nb-n{font-family:var(--fd);font-size:84px;color:var(--black);line-height:1;display:block;}
+.nb-l{font-family:var(--fu);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(0,0,0,.45);margin-top:4px;}
+
+.reviews{padding:120px 52px;background:var(--deep);border-top:1px solid rgba(196,154,56,.07);}
+.reviews-inner{max-width:1400px;margin:0 auto;}
+.reviews-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;}
+.reviews-h2{font-family:var(--fd);font-size:clamp(48px,6vw,90px);line-height:.9;letter-spacing:.02em;color:var(--white);}
+.reviews-h2 .g{color:var(--gold);}
+.rating-summary{text-align:right;}
+.rating-num{font-family:var(--fd);font-size:64px;color:var(--gold);line-height:1;}
+.rating-stars{font-size:18px;margin-top:4px;letter-spacing:3px;}
+.rating-label{font-family:var(--fu);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-top:4px;}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.rcard{background:var(--surface);padding:36px 28px;border:1px solid rgba(196,154,56,.05);transition:background .3s,border-color .3s;position:relative;}
+.rcard:hover{background:rgba(196,154,56,.03);border-color:rgba(196,154,56,.15);}
+.rcard-stars{font-size:14px;letter-spacing:2px;color:var(--gold);margin-bottom:16px;}
+.rcard-text{font-size:14px;font-weight:300;color:var(--silver);line-height:1.75;margin-bottom:20px;font-style:italic;}
+.rcard-author{display:flex;align-items:center;gap:12px;}
+.rcard-initials{width:36px;height:36px;border-radius:50%;background:rgba(196,154,56,.15);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:14px;color:var(--gold);flex-shrink:0;}
+.rcard-name{font-family:var(--fu);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--white);}
+.rcard-meta{font-family:var(--fu);font-size:9px;letter-spacing:.12em;color:var(--dim);margin-top:2px;}
+.rcard-badge{position:absolute;top:20px;right:20px;font-family:var(--fu);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,154,56,.2);padding:4px 10px;}
+
+.gallery-strip{position:relative;z-index:2;background:var(--black);padding:100px 0 80px;}
+.gs-head{padding:0 52px;margin-bottom:44px;display:flex;align-items:flex-end;justify-content:space-between;}
+.gs-h2{font-family:var(--fd);font-size:clamp(52px,7vw,96px);line-height:.9;letter-spacing:.02em;color:var(--white);}
+.gs-h2 .g{color:var(--gold);}
+.gs-hint{font-family:var(--fu);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:10px;}
+.gs-hint::after{content:'→';font-size:16px;}
+.gs-track{display:flex;gap:2px;padding:0 52px;overflow-x:auto;scrollbar-width:none;}
+.gs-track::-webkit-scrollbar{display:none;}
+.gi{flex-shrink:0;position:relative;overflow:hidden;background:var(--surface);}
+.gi:nth-child(3n+1){width:420px;height:560px;}
+.gi:nth-child(3n+2){width:300px;height:400px;align-self:center;}
+.gi:nth-child(3n+0){width:500px;height:480px;align-self:flex-end;}
+.gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.23,1,.32,1);}
+.gi:hover img{transform:scale(1.04);}
+.gi::before{content:attr(data-ph);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fu);font-size:9px;letter-spacing:.14em;color:rgba(196,154,56,.12);text-transform:uppercase;text-align:center;padding:36px;}
+.gi::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.7) 0%,transparent 55%);z-index:1;pointer-events:none;}
+.gi-lbl{position:absolute;bottom:16px;left:18px;z-index:2;font-family:var(--fu);font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);}
+
+.page-nav-band{display:flex;background:var(--surface);border-top:1px solid rgba(196,154,56,.07);position:relative;z-index:2;}
+.pnb-item{flex:1;padding:44px 44px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;border-right:1px solid rgba(255,255,255,.04);transition:background .35s;}
+.pnb-item:last-child{border-right:none;}.pnb-item:hover{background:rgba(196,154,56,.04);}
+.pnb-label{font-family:var(--fu);font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.pnb-title{font-family:var(--fd);font-size:26px;letter-spacing:.06em;color:var(--white);}
+.pnb-arrow{font-family:var(--fd);font-size:28px;color:rgba(196,154,56,.28);transition:transform .3s,color .3s;}
+.pnb-item:hover .pnb-arrow{transform:translateX(7px);color:var(--gold);}
+
+.contact-final{position:relative;z-index:2;background:var(--deep);padding:130px 52px;border-top:1px solid rgba(196,154,56,.09);}
+.cf-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;}
+.cf-h2{font-family:var(--fd);font-size:clamp(60px,9vw,124px);line-height:.87;letter-spacing:.02em;color:var(--white);margin-bottom:28px;}
+.cf-h2 .g{color:var(--gold);}.cf-h2 .s{-webkit-text-stroke:1px rgba(237,236,231,.11);color:transparent;display:block;}
+.cf-body{font-size:15px;font-weight:300;color:var(--dim);line-height:1.8;max-width:360px;margin-bottom:44px;letter-spacing:.015em;}
+.cf-info{display:flex;flex-direction:column;}
+.cf-row{display:flex;gap:20px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.cf-row:first-child{border-top:1px solid rgba(255,255,255,.04);}
+.cf-key{font-family:var(--fu);font-size:8px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);min-width:70px;padding-top:2px;}
+.cf-val{font-size:13px;font-weight:300;color:var(--silver);line-height:1.6;}
+.cf-right{display:flex;flex-direction:column;gap:14px;}
+.wa-btn{display:flex;align-items:center;gap:16px;background:#25D366;color:#000;text-decoration:none;padding:22px 32px;font-family:var(--fu);font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;position:relative;overflow:hidden;transition:all .3s;}
+.wa-btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.13);transform:translateX(-100%);transition:transform .45s cubic-bezier(.76,0,.24,1);}
+.wa-btn:hover::before{transform:translateX(0);}
+.wa-btn svg,.wa-btn span{position:relative;z-index:1;}
+.map-box{height:200px;background:var(--surface);display:flex;align-items:center;justify-content:center;border:1px solid rgba(196,154,56,.07);position:relative;overflow:hidden;}
+.map-box::before{content:'[ Google Maps — Industrial Area 4, Sharjah ]';font-family:var(--fu);font-size:9px;letter-spacing:.14em;color:rgba(196,154,56,.16);text-transform:uppercase;text-align:center;padding:20px;}
+.soc-row{display:flex;gap:10px;}
+.soc-lnk{font-family:var(--fu);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:10px 18px;border:1px solid rgba(255,255,255,.07);transition:all .3s;}
+.soc-lnk:hover{color:var(--gold);border-color:rgba(196,154,56,.25);}
+
+@media(max-width:900px){
+  #hero{padding:0 24px 60px;}.h-stats{display:none;}
+  .chapter{padding:80px 24px;}.ch-intro{grid-template-columns:1fr;gap:48px;}
+  .contact-strip{flex-direction:column;}.cs-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.04);}
+  #products-prev{padding:80px 24px;}.pp-head{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:40px;}.pp-sub{text-align:left;}.pp-grid{grid-template-columns:1fr 1fr;}
+  .nb-grid{grid-template-columns:1fr 1fr;}
+  .reviews{padding:80px 24px;}.reviews-header{flex-direction:column;align-items:flex-start;gap:24px;}.rating-summary{text-align:left;}.reviews-grid{grid-template-columns:1fr;}
+  .gallery-strip{padding:80px 0;}.gs-head,.gs-track{padding-left:24px;padding-right:24px;}
+  .page-nav-band{flex-direction:column;}.pnb-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.04);}
+  .contact-final{padding:80px 24px;}.cf-inner{grid-template-columns:1fr;gap:56px;}
+}
+@media(max-width:560px){.pp-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body class="noise">
+
+<div id="jcursor"></div>
+<div id="jring"></div>
+<div id="jlabel"></div>
+
+<div id="preload">
+  <div class="pl-logo-wrap">
+    <div class="pl-logo" id="pllo">
+      <img src="images/logo.png" alt="Juhrum">
+      <span style="color:var(--white)">JUHR</span><span style="color:var(--gold)">UM</span>
+    </div>
+  </div>
+  <div class="pl-bar-wrap"><div class="pl-bar" id="plbar"></div></div>
+  <div class="pl-sub" id="plsub">Desert Iron — Est. 2019 — Sharjah UAE</div>
+</div>
+
+<canvas id="jcanvas"></canvas>
+
+<nav class="jnav">
+  <a href="index.html" class="jnav-logo"><img src="images/logo.png" alt="Juhrum Auto Accessories"></a>
+  <ul class="jnav-links">
+    <li><a href="index.html" class="cur">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/9710503002898" class="jnav-wa" data-tip="WhatsApp">WhatsApp Us</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-veil"></div>
+  <!--
+    HERO VIDEO: Download free from Pexels — pickup truck desert
+    https://www.pexels.com/video/a-pickup-truck-is-travelling-on-a-desert-3573967/
+    Save as images/hero.mp4 then replace hero-bg div with:
+    <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+      <source src="images/hero.mp4" type="video/mp4">
+    </video>
+  -->
+  <div class="hero-content">
+    <div class="h-tag" id="htag"><b></b>Sharjah, UAE — Industrial Area 4 — Est. 2019</div>
+    <h1 class="h-h1">
+      <span class="row"><span class="inner" id="hl0">DESERT</span></span>
+      <span class="row"><span class="inner g" id="hl1">IRON.</span></span>
+      <span class="row"><span class="inner s" id="hl2">BUILT.</span></span>
+    </h1>
+    <p class="h-sub" id="hsub">Premium 4×4 and pickup truck accessories for drivers who demand more. Trusted by UAE truck owners for over five years.</p>
+    <div class="h-ctas" id="hctas">
+      <a href="products.html" class="btn-g" data-tip="Explore"><span>View Products</span><span>→</span></a>
+      <a href="story.html" class="btn-o">Our Story</a>
+    </div>
+  </div>
+  <div class="h-stats" id="hstats">
+    <div class="hst"><div class="hst-n">5+</div><div class="hst-l">Years Active</div></div>
+    <div class="hst-div"></div>
+    <div class="hst"><div class="hst-n">4.7★</div><div class="hst-l">Google Rating</div></div>
+    <div class="hst-div"></div>
+    <div class="hst"><div class="hst-n">UAE</div><div class="hst-l">Nationwide</div></div>
+  </div>
+  <div class="h-scroll" id="hscroll"><div class="h-scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-t">
+    <div class="ticker-i">Bed Covers<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Pickup Accessories<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Ford F-Series<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Dodge Ram TRX<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Chevrolet Silverado<span class="ticker-dot"></span></div>
+    <div class="ticker-i">4×4 Off-Road<span class="ticker-dot"></span></div>
+    <div class="ticker-i">4.7★ Google Rating<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Sharjah UAE<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Bed Covers<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Pickup Accessories<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Ford F-Series<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Dodge Ram TRX<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Chevrolet Silverado<span class="ticker-dot"></span></div>
+    <div class="ticker-i">4×4 Off-Road<span class="ticker-dot"></span></div>
+    <div class="ticker-i">4.7★ Google Rating<span class="ticker-dot"></span></div>
+    <div class="ticker-i">Sharjah UAE<span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<div class="chapter" style="background:var(--black);">
+  <div style="position:absolute;font-family:var(--fd);font-size:26vw;color:rgba(196,154,56,.025);top:-5%;left:-2%;pointer-events:none;line-height:1;letter-spacing:.06em;">01</div>
+  <div class="ch-intro">
+    <div>
+      <div class="tag reveal" style="margin-bottom:22px;">Chapter One</div>
+      <h2 class="ch-h2 reveal d1">WHERE EVERY<br><span class="g">TRUCK</span><br>HAS A<br><span class="s">STORY.</span></h2>
+      <p class="ch-body reveal d2">Juhrum was built from a simple obsession — <strong>serious trucks deserve serious gear.</strong> Founded in Sharjah's Industrial Area 4 by Hadi Ghanaatian, the shop draws from deep Persian automotive culture, where pride in your vehicle isn't a hobby. It's a way of life.</p>
+      <p class="ch-body reveal d3">Five years later, <em>trusted by pickup owners across the UAE</em> — from Silverado bed covers to full Dodge Ram TRX builds. Word of mouth built what no advertising could.</p>
+      <div class="reveal d4" style="margin-top:36px;"><a href="story.html" class="btn-o" data-tip="Story">Read the full story</a></div>
+    </div>
+    <div class="shop-img-wrap reveal d2">
+      <img src="images/shop-interior.png" alt="Juhrum Auto Accessories showroom — bed covers display, Sharjah UAE" class="shop-img">
+      <div class="shop-img-badge"><div class="sib-n">5+</div><span class="sib-l">Years<br>Trusted</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-strip">
+  <a href="https://wa.me/9710503002898" class="cs-item" data-tip="Chat" target="_blank">
+    <div><div class="cs-label">WhatsApp</div><div class="cs-title">Message Us</div></div><div class="cs-arrow">→</div>
+  </a>
+  <a href="products.html" class="cs-item" data-tip="Browse">
+    <div><div class="cs-label">Full Catalogue</div><div class="cs-title">View Products</div></div><div class="cs-arrow">→</div>
+  </a>
+  <a href="contact.html" class="cs-item" data-tip="Visit">
+    <div><div class="cs-label">Industrial Area 4</div><div class="cs-title">Sharjah, UAE</div></div><div class="cs-arrow">→</div>
+  </a>
+</div>
+
+<section id="products-prev">
+  <div class="pp-head reveal">
+    <div>
+      <div class="tag" style="margin-bottom:16px;">What We Offer</div>
+      <h2 class="pp-h2">OUR<br><span class="g">CATALOGUE</span><span class="s">BUILDS.</span></h2>
+    </div>
+    <div class="pp-right">
+      <p class="pp-sub">No prices listed. Every build is unique. Contact us for a personalised quote.</p>
+      <a href="products.html" class="btn-o" style="font-size:10px;">See all products</a>
+    </div>
+  </div>
+  <div class="pp-grid">
+
+    <div class="pc3 card3d reveal" data-tip="Inquire">
+      <div class="card3d-inner" style="width:100%;height:100%;position:relative;">
+        <img src="images/bed-covers.png" alt="Hardtop tonneau bed covers — Chevrolet Silverado 2022" class="pc3-img">
+        <div class="pc3-ov"></div><div class="glow"></div><div class="pc3-border"></div>
+        <div class="pc3-idx">01</div>
+        <div class="pc3-content">
+          <div class="pc3-cat">Bed Covers</div>
+          <div class="pc3-name">Hardtop Tonneau</div>
+          <div class="pc3-desc">6063-T5 aluminium slats, powder-coated matte black. EPDM rubber seals. 500 lb load rating. Fits F-150, Silverado, Dodge Ram, and more.</div>
+          <a href="https://wa.me/9710503002898" class="pc3-cta" target="_blank">Request Price →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc3 card3d reveal d1" data-tip="Inquire">
+      <div class="card3d-inner" style="width:100%;height:100%;position:relative;">
+        <img src="images/dodge-ram-trx.png" alt="Dodge Ram TRX 2020 — full accessories build, Juhrum UAE" class="pc3-img">
+        <div class="pc3-ov"></div><div class="glow"></div><div class="pc3-border"></div>
+        <div class="pc3-idx">02</div>
+        <div class="pc3-content">
+          <div class="pc3-cat">Full Build</div>
+          <div class="pc3-name">Dodge Ram TRX</div>
+          <div class="pc3-desc">Full accessory build — exterior upgrades, interior packages, and protection. Come in and build yours to spec.</div>
+          <a href="https://wa.me/9710503002898" class="pc3-cta" target="_blank">Request Price →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc3 card3d reveal d2" data-tip="Inquire">
+      <div class="card3d-inner" style="width:100%;height:100%;position:relative;">
+        <canvas id="c3d0"></canvas>
+        <div class="pc3-ph">EXTERIOR BUILD PHOTO</div>
+        <div class="pc3-ov"></div><div class="glow"></div><div class="pc3-border"></div>
+        <div class="pc3-idx">03</div>
+        <div class="pc3-content">
+          <div class="pc3-cat">Exterior</div>
+          <div class="pc3-name">Exterior Builds</div>
+          <div class="pc3-desc">Bull bars, running boards, roof racks, fender flares. UAE desert-tested. Fitted to your exact model.</div>
+          <a href="https://wa.me/9710503002898" class="pc3-cta" target="_blank">Request Price →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc3 card3d reveal d1" data-tip="Inquire">
+      <div class="card3d-inner" style="width:100%;height:100%;position:relative;">
+        <canvas id="c3d1"></canvas>
+        <div class="pc3-ph">AUDIO / SCREENS PHOTO</div>
+        <div class="pc3-ov"></div><div class="glow"></div><div class="pc3-border"></div>
+        <div class="pc3-idx">04</div>
+        <div class="pc3-content">
+          <div class="pc3-cat">Electronics</div>
+          <div class="pc3-name">Audio & Screens</div>
+          <div class="pc3-desc">Apple CarPlay, Android Auto, premium audio, subwoofers, cameras. Full professional installation by our technical team.</div>
+          <a href="https://wa.me/9710503002898" class="pc3-cta" target="_blank">Request Price →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc3 card3d reveal d2" data-tip="Inquire">
+      <div class="card3d-inner" style="width:100%;height:100%;position:relative;">
+        <canvas id="c3d2"></canvas>
+        <div class="pc3-ph">PPF / THERMAL PHOTO</div>
+        <div class="pc3-ov"></div><div class="glow"></div><div class="pc3-border"></div>
+        <div class="pc3-idx">05</div>
+        <div class="pc3-content">
+          <div class="pc3-cat">Protection</div>
+          <div class="pc3-name">PPF & Thermal</div>
+          <div class="pc3-desc">Self-healing paint protection film. All types of thermal insulation. Keeps your truck pristine in UAE heat.</div>
+          <a href="https://wa.me/9710503002898" class="pc3-cta" target="_blank">Request Price →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc3 card3d reveal d3" data-tip="Talk">
+      <div class="card3d-inner" style="width:100%;height:100%;position:relative;">
+        <canvas id="c3d3"></canvas>
+        <div class="pc3-ph">INTERIOR / UPHOLSTERY PHOTO</div>
+        <div class="pc3-ov"></div><div class="glow"></div><div class="pc3-border"></div>
+        <div class="pc3-idx">06</div>
+        <div class="pc3-content">
+          <div class="pc3-cat">Interior</div>
+          <div class="pc3-name">Upholstery & Leather</div>
+          <div class="pc3-desc">Full leather seat upholstery and floor installation in all colours. Installed to factory finish standard.</div>
+          <a href="https://wa.me/9710503002898" class="pc3-cta" target="_blank">Request Price →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="pp-more reveal">
+    <a href="products.html" class="btn-g" data-tip="All Products"><span>View Full Catalogue</span><span>→</span></a>
+  </div>
+</section>
+
+<div class="nb">
+  <div class="nb-grid">
+    <div class="nb-item reveal"><span class="nb-n" data-count="5" data-suffix="+">0+</span><span class="nb-l">Years Active</span></div>
+    <div class="nb-item reveal d1"><span class="nb-n" data-count="100" data-suffix="+">0+</span><span class="nb-l">Products & Services</span></div>
+    <div class="nb-item reveal d2"><span class="nb-n">4.7★</span><span class="nb-l">Google Rating</span></div>
+    <div class="nb-item reveal d3"><span class="nb-n">UAE</span><span class="nb-l">Nationwide</span></div>
+  </div>
+</div>
+
+<section class="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-header reveal">
+      <h2 class="reviews-h2">WHAT THEY<br><span class="g">SAY.</span></h2>
+      <div class="rating-summary">
+        <div class="rating-num">4.7</div>
+        <div class="rating-stars">★★★★★</div>
+        <div class="rating-label">Google Reviews</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="rcard reveal">
+        <div class="rcard-stars">★★★★★</div>
+        <p class="rcard-text">"Such a great shop having all accessories for all 4x4 vehicles. Prices are very low and staff are friendly. Solution for Tundra, GMC, Dodge Ram, Ford F150 and much more."</p>
+        <div class="rcard-author"><div class="rcard-initials">AA</div><div><div class="rcard-name">Adnan Aadi</div><div class="rcard-meta">6 months ago</div></div></div>
+      </div>
+      <div class="rcard reveal d1">
+        <div class="rcard-stars">★★★★★</div>
+        <p class="rcard-text">"Got a double support rear hitch carrier. Good service, friendly staff. Lots of offroad accessories available. Good prices as well."</p>
+        <div class="rcard-author"><div class="rcard-initials">HI</div><div><div class="rcard-name">Hisham Irshad</div><div class="rcard-meta">Local Guide · 285 reviews · 2 months ago</div></div></div>
+        <div class="rcard-badge">Local Guide</div>
+      </div>
+      <div class="rcard reveal d2">
+        <div class="rcard-stars">★★★★★</div>
+        <p class="rcard-text">"Very good quality with good price and also good service. Ehsan showed me everything — really helpful."</p>
+        <div class="rcard-author"><div class="rcard-initials">AO</div><div><div class="rcard-name">Amir Omid</div><div class="rcard-meta">1 month ago</div></div></div>
+      </div>
+      <div class="rcard reveal d1">
+        <div class="rcard-stars">★★★★★</div>
+        <p class="rcard-text">"One of the best car accessories shops in Sharjah. Amazing quality, staff, and products."</p>
+        <div class="rcard-author"><div class="rcard-initials">WS</div><div><div class="rcard-name">Wael Saeed</div><div class="rcard-meta">Local Guide · 173 reviews · 6 months ago</div></div></div>
+        <div class="rcard-badge">Local Guide</div>
+      </div>
+      <div class="rcard reveal d2">
+        <div class="rcard-stars">★★★★★</div>
+        <p class="rcard-text">"I installed a roof rack and it was great. 100% recommended — fantastic service."</p>
+        <div class="rcard-author"><div class="rcard-initials">JM</div><div><div class="rcard-name">Jamal Mohammed</div><div class="rcard-meta">2 weeks ago</div></div></div>
+      </div>
+      <div class="rcard reveal d3">
+        <div class="rcard-stars">★★★★★</div>
+        <p class="rcard-text">"Quick work with good quality. Will definitely be back for more accessories."</p>
+        <div class="rcard-author"><div class="rcard-initials">IM</div><div><div class="rcard-name">Igor Melnikov</div><div class="rcard-meta">5 months ago</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gallery-strip">
+  <div class="gs-head reveal">
+    <div><div class="tag" style="margin-bottom:14px;">The Builds</div><h2 class="gs-h2">GALLERY<br><span class="g">BUILDS.</span></h2></div>
+    <div class="gs-hint">Drag to explore</div>
+  </div>
+  <div class="gs-track drag-scroll">
+    <div class="gi" data-ph="ADD YOUR PHOTOS — Drag &amp; replace"><img src="images/bed-covers.png" alt="Bed covers — Chevrolet Silverado 2022"><div class="gi-lbl">Bed Covers — Silverado</div></div>
+    <div class="gi" data-ph="ADD YOUR PHOTOS"><img src="images/dodge-ram-trx.png" alt="Dodge Ram TRX 2020 — full build"><div class="gi-lbl">Full Build — Ram TRX</div></div>
+    <div class="gi" data-ph="ADD YOUR PHOTOS"><img src="images/shop-interior.png" alt="Juhrum showroom interior"><div class="gi-lbl">Our Showroom</div></div>
+    <div class="gi" data-ph="ADD PHOTO — Exterior accessories install"></div>
+    <div class="gi" data-ph="ADD PHOTO — Interior / upholstery work"></div>
+    <div class="gi" data-ph="ADD PHOTO — PPF / protection install"></div>
+    <div class="gi" data-ph="ADD PHOTO — Truck off-road in desert"></div>
+  </div>
+</div>
+
+<div class="page-nav-band">
+  <a href="https://instagram.com/Jahrom.4x4.ae" target="_blank" class="pnb-item" data-tip="Instagram"><div><div class="pnb-label">Follow Us</div><div class="pnb-title">@Jahrom.4x4.ae</div></div><div class="pnb-arrow">↗</div></a>
+  <a href="products.html" class="pnb-item" data-tip="Products"><div><div class="pnb-label">Browse</div><div class="pnb-title">All Products</div></div><div class="pnb-arrow">→</div></a>
+  <a href="story.html" class="pnb-item" data-tip="Story"><div><div class="pnb-label">Learn More</div><div class="pnb-title">Our Story</div></div><div class="pnb-arrow">→</div></a>
+  <a href="https://wa.me/9710503002898" class="pnb-item" data-tip="Chat" target="_blank"><div><div class="pnb-label">Get a Quote</div><div class="pnb-title">WhatsApp</div></div><div class="pnb-arrow">→</div></a>
+</div>
+
+<div class="contact-final">
+  <div class="cf-inner">
+    <div>
+      <div class="tag reveal" style="margin-bottom:24px;">Get In Touch</div>
+      <h2 class="cf-h2 reveal d1">LET'S<br>BUILD<br><span class="g">YOUR</span><br><span class="s">TRUCK.</span></h2>
+      <p class="cf-body reveal d2">Know what you want or just starting — either way, we've got you. Message us on WhatsApp and our team responds fast.</p>
+      <div class="cf-info reveal d3">
+        <div class="cf-row"><span class="cf-key">Location</span><span class="cf-val">274, First Industrial Street<br>Industrial Area 4, Sharjah UAE</span></div>
+        <div class="cf-row"><span class="cf-key">Hours</span><span class="cf-val">8:00 AM – 11:00 PM, Every Day</span></div>
+        <div class="cf-row"><span class="cf-key">Phone</span><span class="cf-val">050 300 2898</span></div>
+        <div class="cf-row"><span class="cf-key">Rating</span><span class="cf-val">4.7 ★ Google Reviews</span></div>
+      </div>
+    </div>
+    <div class="cf-right reveal d2">
+      <a href="https://wa.me/9710503002898" class="wa-btn" target="_blank" data-tip="Chat">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span>Message on WhatsApp</span>
+      </a>
+      <div class="map-box"></div>
+      <div class="soc-row">
+        <a href="https://instagram.com/Jahrom.4x4.ae" class="soc-lnk" target="_blank">Instagram</a>
+        <a href="https://tiktok.com/@Jahrom.4x4.UAE" class="soc-lnk" target="_blank">TikTok</a>
+        <a href="https://youtube.com/@jahrom_4x4_ae" class="soc-lnk" target="_blank">YouTube</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="jfoot">
+  <div class="jfoot-logo">JUHR<b>UM</b></div>
+  <div class="jfoot-tag">Desert Iron — Built for Power</div>
+  <div class="jfoot-copy">© 2025 Juhrum Auto Accessories, Sharjah UAE</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const pl=document.getElementById('preload'),logo=document.getElementById('pllo'),bar=document.getElementById('plbar'),sub=document.getElementById('plsub');
+  setTimeout(()=>logo.classList.add('up'),80);
+  setTimeout(()=>{bar.classList.add('go');sub.classList.add('show');},240);
+  setTimeout(()=>{pl.classList.add('exit');setTimeout(()=>pl.style.display='none',1100);startHero();},2000);
+})();
+function startHero(){
+  document.getElementById('htag').classList.add('in');
+  [0,1,2].forEach((i)=>setTimeout(()=>document.getElementById('hl'+i).classList.add('up'),i*120));
+  setTimeout(()=>document.getElementById('hsub').classList.add('in'),500);
+  setTimeout(()=>document.getElementById('hctas').classList.add('in'),700);
+  setTimeout(()=>document.getElementById('hstats').classList.add('in'),900);
+  setTimeout(()=>document.getElementById('hscroll').classList.add('in'),1100);
+}
+(function(){
+  const canvas=document.getElementById('jcanvas');
+  const R=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  R.setPixelRatio(Math.min(devicePixelRatio,2)); R.setSize(innerWidth,innerHeight);
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(58,innerWidth/innerHeight,.1,1000); cam.position.z=5;
+  const N=2800,pos=new Float32Array(N*3),sc=new Float32Array(N),rnd=new Float32Array(N);
+  for(let i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*20;pos[i*3+1]=(Math.random()-.5)*12;pos[i*3+2]=(Math.random()-.5)*10;sc[i]=Math.random();rnd[i]=Math.random();}
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  geo.setAttribute('aS',new THREE.BufferAttribute(sc,1));
+  geo.setAttribute('aR',new THREE.BufferAttribute(rnd,1));
+  const mat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,uniforms:{uT:{value:0},uM:{value:new THREE.Vector2()},uSz:{value:2.6*R.getPixelRatio()}},vertexShader:`uniform float uT;uniform vec2 uM;uniform float uSz;attribute float aS;attribute float aR;varying float vA;void main(){vec3 p=position;p.x+=sin(uT*.35+aR*6.28)*.1*aR;p.y+=cos(uT*.25+aR*3.14)*.08*aR;p.z+=sin(uT*.18+aR*9.)*.05;vec4 mv=modelViewMatrix*vec4(p,1.);vec2 sp=(projectionMatrix*mv).xy;float d=distance(sp,uM*2.);float rep=smoothstep(.9,0.,d)*.55;p.xy+=normalize(p.xy-uM)*rep;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);gl_PointSize=uSz*aS*(1.+sin(uT+aR*6.28)*.28);vA=aS*.65;}`,fragmentShader:`varying float vA;void main(){float d=distance(gl_PointCoord,vec2(.5));if(d>.5)discard;float a=smoothstep(.5,0.,d)*vA;gl_FragColor=vec4(.77,.6,.22,a*.48);}`});
+  const pts=new THREE.Points(geo,mat); scene.add(pts);
+  let mx=0,my=0;
+  document.addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5)*2;my=-(e.clientY/innerHeight-.5)*2;});
+  const clk=new THREE.Clock();
+  (function animate(){requestAnimationFrame(animate);const t=clk.getElapsedTime();mat.uniforms.uT.value=t;mat.uniforms.uM.value.set(mx*.5,my*.5);cam.position.x+=(mx*.45-cam.position.x)*.04;cam.position.y+=(my*.3-cam.position.y)*.04;cam.lookAt(scene.position);pts.rotation.y=t*.018;R.render(scene,cam);})();
+  window.addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();R.setSize(innerWidth,innerHeight);});
+})();
+(function(){
+  [{id:'c3d0',shape:'ring',acc:0x999999},{id:'c3d1',shape:'sphere',acc:0x4455CC},{id:'c3d2',shape:'film',acc:0xC49A38},{id:'c3d3',shape:'seat',acc:0xAA7733}].forEach(cfg=>{
+    const canvas=document.getElementById(cfg.id); if(!canvas)return;
+    const R=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true}); R.setPixelRatio(Math.min(devicePixelRatio,2));
+    const scene=new THREE.Scene(); const cam=new THREE.PerspectiveCamera(50,1,.1,100); cam.position.z=3.5;
+    scene.add(new THREE.AmbientLight(0xffffff,.12));
+    const pl=new THREE.PointLight(cfg.acc,2.2,8); pl.position.set(2,2,2); scene.add(pl);
+    scene.add(new THREE.PointLight(0xffffff,.4,8)).position.set(-2,-1,1);
+    const mat=new THREE.MeshStandardMaterial({color:0x111111,metalness:.75,roughness:.28,emissive:cfg.acc,emissiveIntensity:.07});
+    let mesh;
+    if(cfg.shape==='ring'){mesh=new THREE.Mesh(new THREE.TorusGeometry(.9,.07,8,28),mat);scene.add(mesh);scene.add(Object.assign(new THREE.Mesh(new THREE.BoxGeometry(.1,.46,.88),mat),{position:{x:-.95,y:0,z:0}}));}
+    else if(cfg.shape==='sphere'){mesh=new THREE.Mesh(new THREE.SphereGeometry(.88,32,32),new THREE.MeshStandardMaterial({color:0x08080e,metalness:.85,roughness:.08,emissive:cfg.acc,emissiveIntensity:.35}));scene.add(mesh);}
+    else if(cfg.shape==='film'){mesh=new THREE.Mesh(new THREE.PlaneGeometry(2,.04),new THREE.MeshStandardMaterial({color:cfg.acc,metalness:.9,roughness:.15,emissive:cfg.acc,emissiveIntensity:.2}));scene.add(mesh);for(let y=-.5;y<=.5;y+=.2){const f=new THREE.Mesh(new THREE.PlaneGeometry(2,.003),mat);f.position.y=y;scene.add(f);}}
+    else if(cfg.shape==='seat'){mesh=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.2,.16),mat);scene.add(mesh);const s=new THREE.Mesh(new THREE.BoxGeometry(1.2,.16,.9),mat);s.position.set(0,-.68,.38);scene.add(s);}
+    const upd=()=>{const w=canvas.parentElement.offsetWidth||300,h=canvas.parentElement.offsetHeight||400;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();};upd();
+    let hov=false; const parent=canvas.closest('.pc3'); if(parent){parent.addEventListener('mouseenter',()=>hov=true);parent.addEventListener('mouseleave',()=>hov=false);}
+    const clk=new THREE.Clock();
+    (function animate(){requestAnimationFrame(animate);const t=clk.getElapsedTime();if(mesh){mesh.rotation.y=t*.38+(hov?.18:0);mesh.rotation.x=Math.sin(t*.28)*.13;}pl.intensity=hov?Math.sin(t*4)*.5+2.8:2.2;R.render(scene,cam);})();
+    window.addEventListener('resize',upd);
+  });
+})();
+</script>
+<script src="juhrum.js"></script>
+</body>
+</html>
